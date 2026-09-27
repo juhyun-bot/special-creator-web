@@ -2276,11 +2276,16 @@ body.ou-modal-open {
   }
 
   /* ② Title 22 */
-  .cv-outro,
   .btd-middle__title,
   .faq__title {
     font-size: 22px;
     letter-spacing: -0.11px;
+  }
+  /* .cv-outro는 이 그룹에서 빠져서 .btd-middle__desc 세 곳이랑 같은 20px로
+     맞춤(직접 요청) — 원래 이 그룹(Title 22)에 있었음 */
+  .cv-outro {
+    font-size: 20px;
+    letter-spacing: -0.1px;
   }
 
   /* ③ Subtitle 18 */
@@ -2376,14 +2381,10 @@ body.ou-modal-open {
     margin-top: 120px;
   }
 
+  /* .btd-middle__desc를 쓰는 세 곳(통계 위 문구/정규 프로그램 문구/기념 선물
+     문구) 전부 20px로 통일 — "그 의미를 담아..."(.insight--after-trophy, 모바일
+     20px)랑 크기 맞춤(직접 요청, 기존 22px가 상대적으로 커 보임) */
   .btd-middle__desc {
-    font-size: 22px;
-    letter-spacing: -0.11px;
-  }
-  /* 통계 위 문구("스페셜 크리에이터의 이야기는...")만 따로 — .btd-middle__desc를
-     BTD 섹션 다른 곳에서도 공유하므로 거기까진 안 건드리게 .stats-intro로 스코프.
-     "그 의미를 담아..."(.insight--after-trophy, 모바일 20px)랑 크기 맞춤(직접 요청) */
-  .stats-intro .btd-middle__desc {
     font-size: 20px;
     letter-spacing: -0.1px;
   }
