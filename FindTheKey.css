@@ -2342,6 +2342,13 @@ body.ou-modal-open {
   .btd-gift {
     margin-bottom: 120px;
   }
+  /* 모바일에서는 넷 다 한 줄에 하나씩 — 나머지 두 항목(라벨이 길어서 저절로
+     줄바꿈됨)이랑 똑같이, 앞 두 항목도 나란히 두 개씩 wrap 되지 않게
+     (직접 요청) */
+  .stats {
+    flex-direction: column;
+    gap: 40px;
+  }
 
   /* main title -> content 80 */
   .ou-contents,
