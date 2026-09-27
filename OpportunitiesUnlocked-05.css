@@ -489,6 +489,15 @@ body {
     gap: 24px;
     justify-content: space-between;
   }
+  /* 모바일에서는 이전 화살표 없이 다음 화살표만, 직접 요청 (05는 원래
+     다음 링크가 없어서 이 규칙은 없어도 nav가 비지만, 나머지 4개
+     페이지와 동일하게 맞춰서 그대로 둠) */
+  .detail__nav-link--prev {
+    display: none;
+  }
+  .detail__nav-link--next {
+    margin-left: auto;
+  }
   .detail__nav-line {
     /* 선(구분선) 제거 — 직접 요청 */
     display: none;
