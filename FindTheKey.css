@@ -2047,10 +2047,6 @@ body.is-fullframe-hero .down-hint img {
   .cv-outro br {
     display: none;
   }
-  .cv-apply {
-    width: 100%;
-    max-width: 275px;
-  }
 }
 
 /* ==========================================================================
@@ -2335,8 +2331,14 @@ body.ou-modal-open {
   .cv-outro {
     margin-top: 120px;
   }
+  /* 데스크톱 72px 그대로라 15px 글자에 비해 여백이 커 보임(직접 요청) — 56px로
+     줄임. width/max-width는 원래 ≤600px 전용 규칙(아래)이었던 걸 여기로 올려서
+     900px 이하 전체에 동일하게 적용 */
   .cv-apply {
     margin-top: 48px;
+    height: 56px;
+    width: 100%;
+    max-width: 275px;
   }
   .trophy-hint {
     margin-bottom: 120px;
