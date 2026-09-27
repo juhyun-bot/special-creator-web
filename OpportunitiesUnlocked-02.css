@@ -436,6 +436,9 @@ body {
   .detail__title {
     font-size: 20px;
   }
+  .detail__body {
+    font-size: 14px;
+  }
   .detail__nav {
     padding-bottom: 32px;
     margin-top: 24px;
