@@ -2301,9 +2301,9 @@ body.ou-modal-open {
     font-weight: 400;
   }
 
-  /* section gaps 340 -> 120 */
+  /* section gaps 340 -> 180 (was 120, widened per direct request) */
   .cv-outro {
-    margin-top: 120px;
+    margin-top: 180px;
   }
   /* 데스크톱 72px 그대로라 15px 글자에 비해 여백이 커 보임(직접 요청) — 56px로
      줄임. width/max-width는 원래 ≤600px 전용 규칙(아래)이었던 걸 여기로 올려서
@@ -2315,11 +2315,14 @@ body.ou-modal-open {
     max-width: 275px;
   }
   .trophy-hint {
-    margin-bottom: 120px;
+    margin-bottom: 180px;
   }
-  .brand-rolling,
   .btd-middle {
-    margin-top: 120px;
+    margin-top: 180px;
+  }
+  /* OU 카드 -> 브랜드 로고월, 나머지 섹션 간격(180px)보다 더 벌림(직접 요청) */
+  .brand-rolling {
+    margin-top: 240px;
   }
   /* 로고 박스가 데스크톱 152x59 그대로라 좁은 화면에선 커 보임(직접 요청) */
   .brand-rolling__track {
@@ -2331,7 +2334,7 @@ body.ou-modal-open {
   }
   .stats,
   .btd-gift {
-    margin-bottom: 120px;
+    margin-bottom: 180px;
   }
   /* 모바일에서는 넷 다 한 줄에 하나씩 — 나머지 두 항목(라벨이 길어서 저절로
      줄바꿈됨)이랑 똑같이, 앞 두 항목도 나란히 두 개씩 wrap 되지 않게
@@ -2367,14 +2370,18 @@ body.ou-modal-open {
   #creator-voices .hero {
     margin-bottom: 80px;
   }
+  /* 브랜드 로고월 -> 통계 위 문구, 나머지 title->content(80px)보다 더 벌림(직접 요청) */
   .stats-intro {
-    margin-top: 80px;
+    margin-top: 140px;
   }
 
   /* subtitle -> content 48 */
-  .stats-intro + .stats,
   .btd-gallery {
     margin-top: 48px;
+  }
+  /* 통계 위 문구 -> 숫자, 나머지 subtitle->content(48px)보다 더 벌림(직접 요청) */
+  .stats-intro + .stats {
+    margin-top: 72px;
   }
   .btd-gift {
     /* the cards' own 48px padding-top already supplies the visible gap */
@@ -2382,7 +2389,7 @@ body.ou-modal-open {
   }
   .faq {
     gap: 40px;
-    margin-top: 120px;
+    margin-top: 180px;
   }
 
   /* .btd-middle__desc를 쓰는 세 곳(통계 위 문구/정규 프로그램 문구/기념 선물
