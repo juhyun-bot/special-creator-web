@@ -1996,12 +1996,14 @@ body.is-fullframe-hero .down-hint img {
 }
 
 @media (max-width: 900px) {
+  /* BTD 여정(.btd-journey__item)의 항목 사이 간격(120px)에 맞춤(직접 요청,
+     기존 48px가 여정/선물에 비해 좁아 보임 — 선물(39px)은 그대로 둠) */
   .cv-row,
   .cv-row--reverse {
     flex-direction: column;
     align-items: stretch;
     gap: 24px;
-    margin-bottom: 48px;
+    margin-bottom: 120px;
   }
   .cv-row__photo {
     flex-basis: auto;
