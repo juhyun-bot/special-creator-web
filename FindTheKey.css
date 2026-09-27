@@ -518,8 +518,8 @@ body.is-fullframe-hero .down-hint img {
 /* compound selector so this outranks the base .about-heading rule further
    down regardless of source order (that rule also sets font-size/weight) */
 .about-heading.about-heading--blur-in {
-  font-size: 38px;
-  letter-spacing: -0.19px;
+  font-size: 35px;
+  letter-spacing: -0.175px;
   font-weight: 600;
   /* a plain single line only sits near vertical-center for an instant as
      it scrolls past — widening its own box to most of the viewport height
@@ -552,9 +552,9 @@ body.is-fullframe-hero .down-hint img {
      direct request — was 30px/-0.15px (the site's "Title" tier); weight
      stays 500 here since only size was asked for (--intro/--blur-in below
      still override to 600, so this only affects --before-badge) */
-  font-size: 38px;
+  font-size: 35px;
   font-weight: 500;
-  letter-spacing: -0.19px;
+  letter-spacing: -0.175px;
   line-height: 1.6;
   color: #2d2828;
   text-align: center;
@@ -581,8 +581,8 @@ body.is-fullframe-hero .down-hint img {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 38px;
-  letter-spacing: -0.19px;
+  font-size: 35px;
+  letter-spacing: -0.175px;
   font-weight: 600;
 }
 
@@ -648,9 +648,9 @@ body.is-fullframe-hero .down-hint img {
   justify-content: center;
   padding: 40px;
   color: #ffffff;
-  font-size: 38px;
+  font-size: 35px;
   font-weight: 600;
-  letter-spacing: -0.19px;
+  letter-spacing: -0.175px;
   line-height: 1.6;
   text-align: center;
   /* hidden until about-hero-roll.js reveals it on the 4th rolling photo;
@@ -808,9 +808,9 @@ body.is-fullframe-hero .down-hint img {
   color: #ffffff;
   /* matched to .about-heading--intro's size per direct request — was
      30px/-0.15px (the site's "Title" tier); weight stays 500 */
-  font-size: 38px;
+  font-size: 35px;
   font-weight: 500;
-  letter-spacing: -0.19px;
+  letter-spacing: -0.175px;
   line-height: 1.6;
   text-align: center;
   opacity: 0;
@@ -880,9 +880,9 @@ body.is-fullframe-hero .down-hint img {
 .insight {
   /* matched to .about-heading--intro's size per direct request — was
      30px/-0.15px (the site's "Title" tier); weight stays 500 */
-  font-size: 38px;
+  font-size: 35px;
   font-weight: 500;
-  letter-spacing: -0.19px;
+  letter-spacing: -0.175px;
   line-height: 1.6;
   text-align: center;
   margin-top: 230px;
@@ -969,6 +969,16 @@ body.is-fullframe-hero .down-hint img {
      next section's hero is still well below the fold there on any window
      height (was 70vh, which left far more empty space than that needed) */
   margin-bottom: 340px;
+}
+
+@media (max-width: 900px) {
+  /* mobile-only: 200px tighter than the desktop calc(effVH * 0.32) gap
+     (100px, then another 100px per direct request) — still viewport-
+     relative, just shifted down by a flat amount rather than a different
+     ratio */
+  .trophy-placeholder {
+    margin-top: calc(var(--vh-eff) * 0.32 - 200px);
+  }
 }
 
 .trophy-viewer {
@@ -2449,7 +2459,8 @@ body.ou-modal-open {
     max-width: 275px;
   }
   .trophy-hint {
-    margin-bottom: 180px;
+    /* 180px + 50px per direct request */
+    margin-bottom: 230px;
   }
   .btd-middle {
     margin-top: 180px;
