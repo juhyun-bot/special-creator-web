@@ -34,10 +34,36 @@
     <div class="detail__photo" data-name="Photo-box">
       <div class="detail__photo-track" id="photoTrack">
         <div class="detail__photo-slide is-active"><img class="detail__photo-img" src="assets/02-opportunities/05-Branded-Taste/01-브랜디드_취향수집가_myfavehobby.png" alt=""></div>
+        <!-- mobile-only (desktop still uses the single-active-link .detail__links
+             block below): direct request to put each link right under its own
+             photo now that mobile stacks every photo instead of showing one at a
+             time — same category/brand/url as the matching .detail__link, just
+             duplicated here since .detail__photo-track is display:contents on
+             mobile so this joins .detail__photo's flex column right after its photo -->
+        <div class="detail__photo-link">
+          <p class="detail__link-category">브랜디드 취향수집가</p>
+          <p class="detail__link-line"><span class="detail__link-brand">myfavehobby</span><a class="detail__link-cta" href="https://www.youtube.com/watch?v=CvHw_SlSmCw&t=24s" target="_blank" rel="noopener">보러가기→</a></p>
+        </div>
         <div class="detail__photo-slide"><img class="detail__photo-img detail__photo-img--contain" src="assets/02-opportunities/05-Branded-Taste/02-전국 내집자랑_88like.jpeg" alt=""></div>
+        <div class="detail__photo-link">
+          <p class="detail__link-category">전국 내집자랑</p>
+          <p class="detail__link-line"><span class="detail__link-brand">88like</span><a class="detail__link-cta" href="https://youtu.be/v4KDHDPyAuM?si=aOZkTc0mAA67jOub" target="_blank" rel="noopener">보러가기→</a></p>
+        </div>
         <div class="detail__photo-slide"><img class="detail__photo-img detail__photo-img--contain" src="assets/02-opportunities/05-Branded-Taste/03-전국 내집자랑_원삼집.jpeg" alt=""></div>
+        <div class="detail__photo-link">
+          <p class="detail__link-category">전국 내집자랑</p>
+          <p class="detail__link-line"><span class="detail__link-brand">원삼집</span><a class="detail__link-cta" href="https://youtu.be/r1F7x2uxkmw?si=ReAw_I4v2q-gcw0n" target="_blank" rel="noopener">보러가기→</a></p>
+        </div>
         <div class="detail__photo-slide"><img class="detail__photo-img" src="assets/02-opportunities/05-Branded-Taste/04-우리집에 놀러와_tovhaus.jpg" alt=""></div>
+        <div class="detail__photo-link">
+          <p class="detail__link-category">우리집에 놀러와</p>
+          <p class="detail__link-line"><span class="detail__link-brand">tovhaus</span><a class="detail__link-cta" href="https://www.instagram.com/reel/DXyJUUdB2-u/" target="_blank" rel="noopener">보러가기→</a></p>
+        </div>
         <div class="detail__photo-slide"><img class="detail__photo-img" src="assets/02-opportunities/05-Branded-Taste/05-왓츠인 마이홈_제니홈무드.jpg" alt=""></div>
+        <div class="detail__photo-link">
+          <p class="detail__link-category">왓츠인 마이홈</p>
+          <p class="detail__link-line"><span class="detail__link-brand">제니홈무드</span><a class="detail__link-cta" href="https://www.instagram.com/reels/DQJMG4xEUNA/" target="_blank" rel="noopener">보러가기→</a></p>
+        </div>
       </div>
       <div class="detail__arrows" data-name="arrow-icon">
         <button class="detail__arrow-btn detail__arrow-btn--prev" type="button" aria-label="이전 이미지">

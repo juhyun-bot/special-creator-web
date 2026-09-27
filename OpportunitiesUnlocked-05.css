@@ -354,6 +354,15 @@ body {
   display: block;
 }
 
+/* mobile-only duplicate of the above, one per photo slide, living inside
+   #photoTrack right after its matching .detail__photo-slide (see the mobile
+   .detail__photo-track { display: contents } rule below — that's what lets
+   this join .detail__photo's flex column directly, landing right under its
+   own photo instead of desktop's single always-in-sync .detail__links block) */
+.detail__photo-link {
+  display: none;
+}
+
 .detail__link-category {
   font-size: 16px;
   font-weight: 600;
@@ -534,5 +543,17 @@ body {
   }
   .detail__arrows {
     display: none;
+  }
+
+  /* 데스크톱의 "활성 사진 1개에 맞춰 바뀌는 링크 1개" 대신, 각 사진 바로
+     아래에 그 사진의 링크를 고정으로 둠(직접 요청) — 원래 .detail__links
+     블록은 숨기고, #photoTrack 안에 사진마다 끼워 넣은 .detail__photo-link
+     복사본을 보여줌 */
+  .detail__links {
+    display: none;
+  }
+  .detail__photo-link {
+    display: block;
+    padding: 16px 24px;
   }
 }
