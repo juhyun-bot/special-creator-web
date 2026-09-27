@@ -2300,7 +2300,6 @@ body.ou-modal-open {
   /* ④ Body 15 */
   .trophy-hint,
   .btd-journey__desc,
-  .cv-row__body,
   .cv-apply,
   .faq__question,
   .faq__answer p,
@@ -2311,14 +2310,25 @@ body.ou-modal-open {
     font-size: 15px;
     letter-spacing: -0.075px;
   }
+  /* .cv-row__body는 이 그룹에서 빠져서 14px로 따로(직접 요청, 웨이트는
+     기존 400 그대로) */
+  .cv-row__body {
+    font-size: 14px;
+  }
 
   /* ⑤ Caption 13 */
   .about-photo__credit,
   .btd-journey__rolling-credit,
-  .ou-card__sub,
+  .ou-card__sub {
+    font-size: 13px;
+    letter-spacing: -0.065px;
+  }
+  /* .cv-row__title-author도 이 그룹에서 빠져서 따로 — 사이즈(13px)는 그대로,
+     웨이트만 500 → 400(직접 요청) */
   .cv-row__title-author {
     font-size: 13px;
     letter-spacing: -0.065px;
+    font-weight: 400;
   }
 
   /* section gaps 340 -> 120 */
