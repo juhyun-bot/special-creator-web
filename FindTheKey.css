@@ -2187,6 +2187,122 @@ body.ou-modal-open {
 }
 
 /* ==========================================================================
+   Footer — 웹 전용(직접 요청), newmixcoffee.com/ko + brandazine.com/clients
+   구조 참고, 내용은 전부 placeholder(대괄호 텍스트). 모바일은 아래 마지막
+   @media 블록에서 통째로 숨김(.site-footer { display: none })
+   ========================================================================== */
+.site-footer {
+  background: #2d2828;
+  color: #ffffff;
+  padding: 80px 36px 32px;
+}
+
+.site-footer__top {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  padding-bottom: 64px;
+}
+
+.site-footer__brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.site-footer__logo {
+  display: block;
+  width: 27.795px;
+  height: 27.795px;
+}
+
+.site-footer__logo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  /* 검정 로고를 밝은 배경 위에서만 쓰던 필터 재사용(About 풀스크린 사진 위
+     반전, 모바일 메뉴 반전과 같은 트릭) — 여긴 배경 자체가 어두워서 항상 흰색 */
+  filter: brightness(0) invert(1);
+}
+
+.site-footer__contact {
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: -0.08px;
+  color: #ffffff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.site-footer__social {
+  display: flex;
+  gap: 12px;
+}
+
+.site-footer__social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #ffffff;
+}
+
+.site-footer__social-icon img {
+  display: block;
+  width: 18px;
+  height: 18px;
+}
+
+.site-footer__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.site-footer__nav a {
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: -0.08px;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.site-footer__office {
+  text-align: right;
+}
+
+.site-footer__office-name {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.07px;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.site-footer__office-address {
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: -0.07px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.site-footer__bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding-top: 24px;
+}
+
+.site-footer__bottom p {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: -0.065px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* ==========================================================================
    Mobile type scale + spacing (<=900px) — same 5-size / 3-weight rules as
    desktop, one scale for phones and tablets. Kept as ONE block at the end of
    the file so it wins over every earlier rule at the same specificity; the
@@ -2423,5 +2539,10 @@ body.ou-modal-open {
   .page {
     padding-left: 24px;
     padding-right: 24px;
+  }
+
+  /* 웹 전용(직접 요청) — 모바일 버전은 아직 안 만듦 */
+  .site-footer {
+    display: none;
   }
 }

@@ -214,6 +214,16 @@ CTA 필 버튼은 전부 **`#464646`** + 흰 글자 + **웨이트 400(Regular)**
 - **마무리 문구**("다음 문을 열 Key Creator를 기다립니다. / 집과 일상에서…", `.cv-outro`)는 다른 서브타이틀 문구와 같은 **27px/500 가운데**, → **"스페셜 크리에이터 지원하기" 버튼(`.cv-apply`, `#464646`, 380×72px, 글자 22px/400)** → 1155 링크
   - **모바일만 버튼 높이 축소**(72px → 56px, 직접 요청 — 글자(모바일 15px)에 비해 여백이 커 보임). 너비도 `width:100%; max-width:275px`(원래 ≤600px 전용이었던 규칙을 900px 이하 전체로 올림, 601~900px 구간에도 똑같이 적용되게)
 
+## 푸터 (`.site-footer`, 웹 전용 — 아직 미완성, 내용 확정 필요)
+
+- **직접 요청, newmixcoffee.com/ko + brandazine.com/clients 참고해 구조만 먼저 제작** — 로고(brandazine 참고, 맨 왼쪽) + 연락처 링크·소셜 아이콘 + 메뉴 4개(About/Opportunities/Programs/Voices, 헤더와 동일) + 회사/오피스 정보 + 맨 아래 저작권 한 줄(newmix에 있던 "Terms of Service / Privacy Policy"는 **직접 요청으로 제외**)
+- **내용은 전부 대괄호 placeholder** — `[이메일 주소]`, `[인스타그램 링크]`, `[회사/오피스 이름]`, `[오피스 주소]`, `[회사명]`(저작권 문구 안). 실제 값 받으면 `FindTheKey.html`의 `<footer class="site-footer">` 블록만 채우면 됨(CSS는 그대로)
+- 소셜 아이콘은 실제 Instagram 로고가 아니라 사이트 자체 아이콘 스타일(카메라 윤곽선, `assets/icon-instagram.svg`)로 새로 그림 — 채널 추가되면 같은 스타일로 아이콘 더 만들 것
+- **위치가 `.page` 밖이 아니라 `#creator-voices` 섹션 맨 끝(FAQ 다음)**: `.page` 바깥은 scroll-snap 때문에 스크롤로 도달 못 함(위 "통합 페이지 구조" 절 참고) — 기존에 있던 400px 여백(`#creator-voices { padding-bottom: 400px }`)을 이 푸터가 사실상 대신함
+- 배경 `#2d2828`(사이트 기본 글자색을 배경으로 뒤집음, 순수 검정 아님)·흰 글자. 로고는 헤더/모바일 메뉴에서 쓰던 것과 같은 `filter: brightness(0) invert(1)` 트릭으로 흰색 처리
+- **모바일은 아직 안 만듦** — `@media(max-width:900px)`에서 `.site-footer { display: none }`으로 통째로 숨겨둠. 나중에 모바일 버전 요청 오면 그때 만들 것
+- **다른 페이지(OU 상세 5개, 선물 상세, hero-home)에는 아직 안 넣음** — FindTheKey.html에만 있음. 디자인 확정되면 다른 페이지에도 넣을지 확인할 것
+
 ## 배경 시스템 — `.bg-gradient-anim` + `.bg-grain` (모든 페이지 공용)
 
 - **`.bg-grain`**: 미세한 노이즈. `mix-blend-mode`는 반드시 **`multiply`** (overlay는 흰 배경에서 수학적으로 no-op이라 안 보임)
