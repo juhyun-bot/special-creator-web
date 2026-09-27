@@ -131,6 +131,12 @@ CTA 필 버튼은 전부 **`#464646`** + 흰 글자 + **웨이트 400(Regular)**
 - **사이드 거터(좌우 여백) 24px로 통일**: `.page`(`FindTheKey.css`), `.header`, OU 상세의 `.detail__content`, 선물 상세의 `.gift-detail` — 전부 예전 35~36px에서 24px로 줄임(FindTheKey.css/OpportunitiesUnlocked-01~05.css/BeyondTheDoor-gift.css 동시 수정). newmixcoffee.com/ko 모바일 버전의 거터 값(24px)을 참고해 맞춘 값. 풀블리드 행(`.rolling`/`.brand-rolling`/OU 카드 스트립 등, `left:50%; margin-left:-50vw` 방식)은 `.page` 패딩과 무관하니 영향 없음
 - 이 블록이 **파일 맨 끝**에 있어서 앞쪽 규칙(같은 specificity)을 이김. 예전에 각 섹션 `@media` 안에 흩어져 있던 `font-size`는 통계 숫자만 빼고 전부 지웠으니, 모바일 크기를 바꿀 땐 여기서만 바꿀 것. 태블릿(601~900px)에서는 OU 카드 위 여백이 hover 성장 공간(padding 90px) 때문에 170px로 보임
 - 모바일 검증은 Chrome 개발자 도구 모바일 보기나 브라우저 패널 `resize_window`(390×844)로 측정값을 확인했을 뿐, **스크롤 연출(멈춤 지점·키 사진 확대 등)이 폰에서 어떻게 보이는지는 아직 미확인**
+- **모바일 전체 타이포/간격 일괄 정리**(위 데스크톱 절과 같은 방식으로, 모바일만의 기준으로 정리해달라는 요청 — 서브에이전트로 7개 파일 전체를 먼저 감사(audit)한 뒤 반영):
+  - **헤더 드롭다운 메뉴 글자 크기 통일**: FTK.css는 15px(5단계 Body와 공유), OU 상세 5개+선물 상세는 16px로 서로 달랐던 걸 15px/-0.075px로 통일(OU/BTD 쪽만 수정)
+  - **OU 상세 제목/본문의 letter-spacing을 모바일 사이즈 기준으로 재계산**: `.detail__title`(20px) -0.11px→-0.1px, `.detail__body`(14px) -0.08px→-0.07px — 폰트 크기는 줄었는데 데스크톱 자간 값이 그대로 남아있던 것 (OU 5개 전부)
+  - **601~900px 폭 커버리지 공백 메움**: 예전엔 `@media(max-width:600px)` 전용 블록에만 있어서 601~900px에서는 데스크톱 값으로 새던 규칙들을 `@media(max-width:900px)` 블록으로 끌어올림 — `.about-badge` margin-top 80px(width/height 263px는 600px 이하 전용으로 남김, 컴포넌트 사이즈라 타이포 정리 범위 밖), `.about-key-photo__text` padding 24px, `#opportunities-unlocked .hero`/`#creator-voices .hero` margin-top 80px, `.ou-contents` padding(가로 20px→24px로 사이트 거터 값에 맞춰 정규화). **`.stats` margin-top 120px은 확인해보니 애초에 죽은 규칙이었음** — `.stats`가 항상 `.stats-intro` 바로 뒤에 와서 더 구체적인 `.stats-intro + .stats { margin-top: 48px }`가 어느 폭에서나 항상 이겨서, 옮기지 않고 주석만 남김
+  - **죽은 코드 정리**: 빈 셀렉터(`.foo {}`) 십여 개, 이미 뒤에 나오는 규칙에 덮어써져서 안 쓰이던 `#creator-voices .hero { margin-bottom: 48px }`, 완전히 빈 채였던 `@media` 블록 2개(`.insight{}`, `.faq__title,.faq__question,.faq__answer p{}`) 전부 삭제
+  - **`.cv-row__title-author`의 웨이트 예외(500→400)는 그대로 유지** — 직접 요청으로 만든 의도된 예외라 다른 13px 캡션류엔 안 퍼뜨림
 
 ## 통합 페이지 구조와 스크롤 동작 (중요)
 

@@ -728,11 +728,6 @@ body.is-fullframe-hero .down-hint img {
 }
 
 @media (max-width: 900px) {
-  .about-heading {
-  }
-  .about-heading--intro,
-  .about-heading.about-heading--blur-in {
-  }
   .about-roll {
     height: 1500px;
   }
@@ -748,14 +743,14 @@ body.is-fullframe-hero .down-hint img {
   .about-scrapbook__col--offset {
     margin-top: 0;
   }
+  /* moved up from the old <=600px-only rule (typography/spacing cleanup) —
+     601-900px was silently falling back to the desktop 135px margin */
+  .about-badge {
+    margin-top: 80px;
+  }
 }
 
 @media (max-width: 600px) {
-  .about-heading {
-  }
-  .about-heading--intro,
-  .about-heading.about-heading--blur-in {
-  }
   .about-roll {
     height: 1200px;
   }
@@ -769,10 +764,14 @@ body.is-fullframe-hero .down-hint img {
     right: 12px;
     bottom: 10px;
   }
+  /* margin-top moved to the shared <=900px block below (typography/spacing
+     cleanup) — 601-900px was silently falling back to the desktop 135px
+     margin since this rule only ever applied <=600px. width/height stay a
+     narrow-phone-only exception here since they're component sizing, not
+     part of the typography/spacing system */
   .about-badge {
     width: 263px;
     height: 263px;
-    margin-top: 80px;
   }
 }
 
@@ -865,14 +864,9 @@ body.is-fullframe-hero .down-hint img {
   font-weight: 600;
 }
 
+/* moved up from the old <=600px-only rule (typography/spacing cleanup) —
+   601-900px was silently falling back to no padding at all here */
 @media (max-width: 900px) {
-  .about-key-photo {
-  }
-}
-
-@media (max-width: 600px) {
-  .about-key-photo {
-  }
   .about-key-photo__text {
     padding: 24px;
   }
@@ -988,11 +982,6 @@ body.is-fullframe-hero .down-hint img {
 
 .trophy-viewer canvas {
   display: block;
-}
-
-@media (max-width: 600px) {
-  .insight {
-  }
 }
 
 /* ==========================================================================
@@ -1374,11 +1363,6 @@ body.is-fullframe-hero .down-hint img {
 }
 
 @media (max-width: 600px) {
-  .stats {
-    margin-top: 120px;
-  }
-  .stats__label {
-  }
   .stats__number-value {
     font-size: 34px;
   }
@@ -1391,16 +1375,6 @@ body.is-fullframe-hero .down-hint img {
 }
 
 @media (max-width: 600px) {
-  #opportunities-unlocked .hero {
-    margin-top: 80px;
-  }
-  #opportunities-unlocked .hero__title {
-  }
-  #opportunities-unlocked .hero__subtitle {
-  }
-  .ou-contents {
-    padding: 0 20px 8px;
-  }
   .ou-card {
     flex: 0 0 200px;
   }
@@ -1792,12 +1766,6 @@ body.is-fullframe-hero .down-hint img {
 }
 
 @media (max-width: 600px) {
-  .btd-middle__title {
-  }
-  .btd-middle__desc {
-  }
-  .btd-journey__num {
-  }
   .btd-gift__stack {
     height: 300px;
   }
@@ -1820,8 +1788,6 @@ body.is-fullframe-hero .down-hint img {
   .btd-gift__stack-photo--front {
     width: 190px;
     height: 240px;
-  }
-  .btd-gift__title {
   }
 }
 
@@ -1998,14 +1964,6 @@ body.is-fullframe-hero .down-hint img {
   max-width: 800px;
 }
 
-@media (max-width: 900px) {
-  .faq__title {
-  }
-  .faq__question {
-  }
-  .faq__answer p {
-  }
-}
 
 /* ---- outro (Figma 55:2735 "sub-text") + apply CTA ---- */
 /* closing statement above the apply button — like the other statement blocks
@@ -2038,9 +1996,6 @@ body.is-fullframe-hero .down-hint img {
 }
 
 @media (max-width: 900px) {
-  #creator-voices .hero {
-    margin-bottom: 48px;
-  }
   .cv-row,
   .cv-row--reverse {
     flex-direction: column;
@@ -2053,20 +2008,9 @@ body.is-fullframe-hero .down-hint img {
     width: 100%;
     height: 240px;
   }
-  .cv-row__title-main {
-  }
 }
 
 @media (max-width: 600px) {
-  #creator-voices .hero {
-    margin-top: 80px;
-  }
-  #creator-voices .hero__title {
-  }
-  #creator-voices .hero__subtitle {
-  }
-  .cv-outro {
-  }
   .cv-outro br {
     display: none;
   }
@@ -2395,11 +2339,29 @@ body.ou-modal-open {
   .stats {
     flex-direction: column;
     gap: 40px;
+    /* NOT adding margin-top:120px here (the old <=600px-only rule had it) —
+       .stats is always right after .stats-intro in the DOM, so the more
+       specific ".stats-intro + .stats { margin-top: 48px }" below already
+       wins regardless, at every width. The old rule was dead weight even
+       at <=600px; this isn't actually a coverage gap */
   }
 
   /* main title -> content 80 */
   .ou-contents,
   .btd-journey {
+    margin-top: 80px;
+  }
+  /* moved up from the old <=600px-only rule (typography/spacing cleanup) —
+     601-900px was silently falling back to the desktop side padding;
+     horizontal padding normalized 20px -> 24px to match the site's mobile
+     gutter everywhere else */
+  .ou-contents {
+    padding: 0 24px 8px;
+  }
+  /* moved up from the old <=600px-only rules (typography/spacing cleanup) —
+     601-900px was silently falling back to desktop margin-top on both */
+  #opportunities-unlocked .hero,
+  #creator-voices .hero {
     margin-top: 80px;
   }
   #creator-voices .hero {

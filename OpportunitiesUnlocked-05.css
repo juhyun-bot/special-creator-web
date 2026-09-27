@@ -205,11 +205,15 @@ body {
     opacity: 1;
     pointer-events: auto;
   }
+  /* unified to match FTK.css's own mobile header dropdown size (15px) —
+     typography/spacing cleanup, direct request. Was 16px here, the one
+     inconsistency between this shared header component's two "copies" */
   .header__link {
     width: 100%;
     padding: 14px 0;
     border-bottom: 1px solid rgba(45, 40, 40, 0.1);
-    font-size: 16px;
+    font-size: 15px;
+    letter-spacing: -0.075px;
   }
   .header__cta {
     width: 100%;
@@ -507,11 +511,18 @@ body {
     /* 선(구분선) 제거 — 직접 요청 */
     border-top: none;
   }
+  /* letter-spacing recalculated for the mobile size per the site's -0.5%
+     formula (was left at the desktop 22px value of -0.11px — typography
+     cleanup) */
   .detail__title {
     font-size: 20px;
+    letter-spacing: -0.1px;
   }
+  /* letter-spacing recalculated for the mobile size (was left at the
+     desktop 16px value of -0.08px — typography cleanup) */
   .detail__body {
     font-size: 14px;
+    letter-spacing: -0.07px;
   }
   .detail__nav {
     padding-bottom: 32px;
