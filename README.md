@@ -225,7 +225,9 @@ CTA 필 버튼은 전부 **`#464646`** + 흰 글자 + **웨이트 400(Regular)**
 - **푸터 다음에 이어지던 여분의 400px도 정리**(직접 요청): `#creator-voices`의 base `padding-bottom:400px`를 데스크톱에서 뺌 — 이제 `.site-footer`의 자체 바닥 여백(32px)이 곧 페이지의 실제 끝. 모바일은 푸터가 없어서(`display:none`) 그 400px이 여전히 필요하므로 `@media(max-width:900px)` 안으로 그대로 옮겨서 유지
 - **모바일 버전도 제작**(직접 요청, newmixcoffee.com/ko의 모바일 푸터 참고 — 메뉴 4개/오피스 정보는 빼고 로고+소셜 아이콘+저작권만 남긴 단순한 구성). `.site-footer__nav`/`.site-footer__office`를 `display:none`으로 숨기고, 로고는 145×23px로 축소, 간격은 데스크톱 240px/줄/20px 패턴을 80px/줄/32px로 축소. `#creator-voices`의 400px도 데스크톱과 같은 이유로(진짜 푸터가 이제 그 역할을 함) 0으로 뺌
   - **로고/인스타 아이콘 배치, 세로 → 가로로 수정**(직접 요청): 처음엔 `.site-footer__brand`가 데스크톱과 같은 `flex-direction:column`이라 로고 밑에 아이콘이 쌓였음 — 모바일만 `flex-direction:row; justify-content:space-between`으로 바꿔서 **왼쪽 로고 / 오른쪽 인스타 아이콘**, 그 아래 저작권 한 줄
-  - **함정(같이 발견/수정)**: 마무리 문구(`.cv-outro`)에 직접 요청으로 넣은 줄바꿈 2개(`<br>`)가 모바일에서 하나도 안 보인다는 리포트 — 원인은 예전에 있던 죽은 규칙 `@media(max-width:600px){ .cv-outro br{display:none} }` (레거시 600px 정리 때 놓쳤던 것). 삭제해서 해결. 그 다음 확인해보니 중간 줄("집과 일상에서 발견한 자신만의 시선과 이야기를")이 폭 때문에 "이야기를"에서 자체적으로 한 번 더 줄바꿈되는 게 보기 안 좋다는 요청이 와서, `.hero__title`의 `br.mobile-break` 패턴과 똑같이 "시선과" 뒤에 모바일 전용 줄바꿈(`<br class="mobile-break">`)을 추가 — 데스크톱은 `display:none`이라 그대로 한 줄
+  - **저작권 줄 위 구분선, 모바일만 제거**(직접 요청): `.site-footer__bottom`의 `border-top`/`padding-top`을 모바일 미디어쿼리에서 `none`/`0`으로 — 로고/아이콘 줄 위의 `.site-footer` 자체 구분선 하나로 충분해서 두 개가 겹쳐 보이던 것 정리. 데스크톱은 그대로 둘 다 유지
+  - **함정(같이 발견/수정)**: 마무리 문구(`.cv-outro`)에 직접 요청으로 넣은 줄바꿈 2개(`<br>`)가 모바일에서 하나도 안 보인다는 리포트 — 원인은 예전에 있던 죽은 규칙 `@media(max-width:600px){ .cv-outro br{display:none} }` (레거시 600px 정리 때 놓쳤던 것). 삭제해서 해결
+  - **줄바꿈 지점 재조정**(직접 요청, 최종): "다음 문을 열 Key Creator를 기다립니다." / "집과 일상에서 발견한 자신만의 시선과" / "이야기를 오늘의집과 더 넓게 펼쳐보세요." 3줄로 — 중간에 한 번 `.hero__title`의 `br.mobile-break` 패턴(모바일 전용 줄바꿈)을 시도했다가 "이야기를"이 두 번째/세 번째 줄 중 어디에 붙어야 하는지 다시 확인받고, 결국 플레인 `<br>` 2개(데스크톱·모바일 공통)로 정리 — `.cv-outro br.mobile-break` 관련 CSS(베이스+모바일 오버라이드)는 더 안 쓰여서 삭제
 - **다른 페이지(OU 상세 5개, 선물 상세, hero-home)에는 아직 안 넣음** — FindTheKey.html에만 있음. 디자인 확정되면 다른 페이지에도 넣을지 확인할 것
 
 ## 배경 시스템 — `.bg-gradient-anim` + `.bg-grain` (모든 페이지 공용)

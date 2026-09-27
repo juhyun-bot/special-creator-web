@@ -478,13 +478,6 @@ body.is-fullframe-hero .down-hint img {
   display: none;
 }
 
-/* mobile-only break after "시선과" instead of letting the line overflow-wrap
-   mid-word inside "이야기를" (직접 요청, 확인 후) — desktop's line is short
-   enough on its own 27px/1-line width and doesn't need this */
-.cv-outro br.mobile-break {
-  display: none;
-}
-
 .hero__subtitle {
   font-size: 21px;
   font-weight: 400;
@@ -2351,9 +2344,6 @@ body.ou-modal-open {
   .hero__title br.mobile-break {
     display: inline;
   }
-  .cv-outro br.mobile-break {
-    display: inline;
-  }
 
   /* every About text element, mobile only — 20px per direct request (not
      tied to the 5-step scale below). Was briefly unified at 26px (matching
@@ -2602,6 +2592,12 @@ body.ou-modal-open {
   .site-footer__nav,
   .site-footer__office {
     display: none;
+  }
+  /* 저작권 줄 위 구분선 제거, 모바일만(직접 요청) — 로고/아이콘 줄 위의
+     .site-footer 자체 구분선 하나로 충분해서 안 겹치게 함 */
+  .site-footer__bottom {
+    border-top: none;
+    padding-top: 0;
   }
   .site-footer__bottom p {
     font-size: 13px;
