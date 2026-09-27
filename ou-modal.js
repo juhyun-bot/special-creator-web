@@ -20,6 +20,11 @@
     modalMenuBtn.addEventListener('click', () => {
       const isOpen = modalHeader.classList.toggle('header--menu-open');
       modalMenuBtn.setAttribute('aria-expanded', String(isOpen));
+      // lock the MODAL's own inner scroll container while its fullscreen menu
+      // panel is open — document.body is already locked via ou-modal-open,
+      // but that's a separate scrolling box from .ou-modal__scroll
+      const scroll = modal.querySelector('.ou-modal__scroll');
+      if (scroll) scroll.style.overflow = isOpen ? 'hidden' : '';
     });
     modalHeaderLinks.querySelectorAll('a').forEach((a) => {
       a.addEventListener('click', () => {
@@ -83,6 +88,8 @@
     if (modalHeader) {
       modalHeader.classList.remove('header--menu-open');
       modalMenuBtn?.setAttribute('aria-expanded', 'false');
+      const scroll = modal.querySelector('.ou-modal__scroll');
+      if (scroll) scroll.style.overflow = '';
     }
   }
 

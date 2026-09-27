@@ -9,11 +9,16 @@
   function closeMenu() {
     header.classList.remove('header--menu-open');
     btn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
   }
 
   btn.addEventListener('click', () => {
     const isOpen = header.classList.toggle('header--menu-open');
     btn.setAttribute('aria-expanded', String(isOpen));
+    // the menu is now a fullscreen panel (see FindTheKey.css/OpportunitiesUnlocked-0N.css
+    // etc.'s mobile .header__links redesign) — lock body scroll behind it while open,
+    // otherwise the page's own scroll-snap can jump sections underneath
+    document.body.style.overflow = isOpen ? 'hidden' : '';
   });
 
   links.querySelectorAll('a').forEach((a) => {
