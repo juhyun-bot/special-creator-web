@@ -1278,7 +1278,7 @@ body.is-fullframe-hero .down-hint img {
 .brand-rolling__track {
   display: flex;
   width: max-content;
-  gap: 35px;
+  gap: 55px;
   animation: brand-rolling-scroll 30s linear infinite;
 }
 
@@ -2379,7 +2379,7 @@ body.ou-modal-open {
   }
   /* 로고 박스가 데스크톱 152x59 그대로라 좁은 화면에선 커 보임(직접 요청) */
   .brand-rolling__track {
-    gap: 20px;
+    gap: 40px;
   }
   .brand-rolling__item {
     flex-basis: 100px;
