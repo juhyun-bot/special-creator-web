@@ -400,15 +400,17 @@ body.is-fullframe-hero .down-hint img {
     display: block;
   }
 
-  /* mobile menu redesign, direct request referencing newmixcoffee.com/ko's
-     fullscreen dark takeover menu (was a small yellow dropdown panel just
-     below the header). The panel covers the WHOLE viewport (position:fixed,
-     all 4 sides 0, not just "below the header") rather than starting below
-     the header row, so its black background shows through behind the
-     header's own transparent area too — the logo/hamburger just need their
-     own stacking (see .header__logo/.header__menu-btn z-index:2 above) to
-     stay drawn on top of it instead of getting covered. padding-top clears
-     the visible header row so the links themselves start below it. */
+  /* mobile menu layout, direct request referencing newmixcoffee.com/ko's
+     fullscreen takeover menu (was a small dropdown capped at max-height:
+     400px just below the header) — the panel now covers the WHOLE viewport
+     (position:fixed, all 4 sides 0, not just "below the header") so it has
+     room for a taller list without a height cap. Typography/colors were
+     changed to match this (32px white on black) in an earlier pass, but a
+     follow-up request reverted those back to the site's original look —
+     only the fullscreen layout itself stayed. padding-top clears the header
+     row so the links start below it; the header's own background stays
+     transparent (unchanged), so the panel's #fbfde4 shows through behind it
+     the same way the old capped-height version did. */
   .header__links {
     position: fixed;
     top: 0;
@@ -420,7 +422,7 @@ body.is-fullframe-hero .down-hint img {
     align-items: flex-start;
     justify-content: flex-start;
     gap: 0;
-    background: #000000;
+    background: #fbfde4;
     padding: 112px 24px 40px;
     opacity: 0;
     pointer-events: none;
@@ -433,40 +435,13 @@ body.is-fullframe-hero .down-hint img {
   }
   .header__link {
     width: 100%;
-    padding: 16px 0;
-    font-size: 32px;
-    font-weight: 500;
-    letter-spacing: -0.02em;
-    color: #ffffff;
-  }
-  .header__link--off {
-    /* newmix's own desktop nav uses this same 70%-opacity-on-white pattern
-       for inactive links (see the opacity-70 utility class on their site) */
-    color: rgba(255, 255, 255, 0.7);
-  }
-  .header__link--on {
-    color: #ffffff;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(45, 40, 40, 0.1);
   }
   .header__cta {
     width: 100%;
-    height: 60px;
-    margin-top: 24px;
-    padding: 0;
-    font-size: 18px;
-  }
-  /* hamburger -> X bars and logo turn white to read against the new black
-     panel (see .header__logo-icon's transition: filter above — reused here).
-     :not(.ou-modal__header) excludes the OU popup's own mobile header clone
-     (see further below) — that one keeps a plain opaque white background at
-     all times instead of also going black on open, so inverting its icons
-     to white here would make them invisible against it */
-  .header--menu-open:not(.ou-modal__header) .header__menu-icon,
-  .header--menu-open:not(.ou-modal__header) .header__menu-icon::before,
-  .header--menu-open:not(.ou-modal__header) .header__menu-icon::after {
-    background: #ffffff;
-  }
-  .header--menu-open:not(.ou-modal__header) .header__logo-icon {
-    filter: brightness(0) invert(1);
+    margin-top: 16px;
+    padding: 12px 0;
   }
 }
 
@@ -2242,10 +2217,10 @@ body.ou-modal-open {
   .ou-modal .ou-modal__header .header__menu-btn {
     display: block;
   }
-  /* the fullscreen black .header__links panel (see the mobile menu redesign
+  /* the fullscreen .header__links panel (see the mobile menu layout note
      above) still starts at top:72px here — same as before — since this
-     header stays a plain opaque white bar rather than also turning black on
-     open; padding-top is cut down to match (the base rule's 112px assumes
+     header stays a plain opaque white bar rather than becoming part of the
+     panel; padding-top is cut down to match (the base rule's 112px assumes
      the panel starts at the very top of the screen and needs to clear the
      header itself, which isn't the case here since it already starts below it) */
   .ou-modal .ou-modal__header .header__links {
@@ -2355,12 +2330,12 @@ body.ou-modal-open {
   .faq__question,
   .faq__answer p,
   .ou-card__title span,
-  .btd-gift__more {
+  .btd-gift__more,
+  .header__link,
+  .header__cta {
     font-size: 15px;
     letter-spacing: -0.075px;
   }
-  /* .header__link/.header__cta는 이 그룹에서 빠짐 — 모바일 메뉴 재설계로
-     자기만의 사이즈(32px/18px)를 씀, 위 "mobile menu redesign" 참고 */
   /* .cv-row__body는 이 그룹에서 빠져서 14px로 따로(직접 요청, 웨이트는
      기존 400 그대로) */
   .cv-row__body {

@@ -171,16 +171,18 @@ body {
   .header__menu-btn {
     display: block;
   }
-  /* mobile menu redesign, direct request referencing newmixcoffee.com/ko's
-     fullscreen dark takeover menu (was a small yellow dropdown panel just
-     below the header). The panel covers the WHOLE viewport (position:fixed,
-     all 4 sides 0, not just "below the header") rather than starting below
-     the header row, so its black background shows through behind the
-     header's own transparent area too — the logo/hamburger just need their
-     own stacking (see .header__logo/.header__menu-btn z-index:2 above) to
-     stay drawn on top of it instead of getting covered. padding-top clears
-     the visible header row (105px here, vs. FindTheKey.css's 72px) so the
-     links themselves start below it. */
+  /* mobile menu layout, direct request referencing newmixcoffee.com/ko's
+     fullscreen takeover menu (was a small dropdown capped at max-height:
+     400px just below the header) — the panel now covers the WHOLE viewport
+     (position:fixed, all 4 sides 0, not just "below the header") so it has
+     room for a taller list without a height cap. Typography/colors were
+     changed to match this (32px white on black) in an earlier pass, but a
+     follow-up request reverted those back to the site's original look —
+     only the fullscreen layout itself stayed. padding-top clears the header
+     row (105px here, vs. FindTheKey.css's 72px) so the links start below
+     it; the header's own background stays transparent (unchanged), so the
+     panel's #fbfde4 shows through behind it the same way the old
+     capped-height version did. */
   .header__links {
     position: fixed;
     top: 0;
@@ -192,7 +194,7 @@ body {
     align-items: flex-start;
     justify-content: flex-start;
     gap: 0;
-    background: #000000;
+    background: #fbfde4;
     padding: 145px 24px 40px;
     opacity: 0;
     pointer-events: none;
@@ -205,33 +207,15 @@ body {
   }
   .header__link {
     width: 100%;
-    padding: 16px 0;
-    font-size: 32px;
-    font-weight: 500;
-    letter-spacing: -0.02em;
-    color: #ffffff;
-  }
-  .header__link--off {
-    color: rgba(255, 255, 255, 0.7);
-  }
-  .header__link--on {
-    color: #ffffff;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(45, 40, 40, 0.1);
+    font-size: 16px;
   }
   .header__cta {
     width: 100%;
-    height: 60px;
-    margin-top: 24px;
-    padding: 0;
-    font-size: 18px;
-  }
-  /* hamburger -> X bars and logo turn white to read against the new black panel */
-  .header--menu-open .header__menu-icon,
-  .header--menu-open .header__menu-icon::before,
-  .header--menu-open .header__menu-icon::after {
-    background: #ffffff;
-  }
-  .header--menu-open .header__logo-icon {
-    filter: brightness(0) invert(1);
+    margin-top: 16px;
+    padding: 12px 0;
+    font-size: 15px;
   }
 }
 
