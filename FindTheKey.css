@@ -2203,7 +2203,8 @@ body.ou-modal-open {
   margin-left: -50vw;
   margin-right: -50vw;
   color: #2d2828;
-  padding: 80px 0 32px;
+  /* FAQ -> 푸터 간격 240px 이상(직접 요청, 웹 전용 — 예전 80px) */
+  padding: 240px 0 32px;
 }
 
 /* .header는 max-width 없이 항상 좌우 36px 인셋이라(초광폭 모니터에서도),

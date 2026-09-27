@@ -221,6 +221,7 @@ CTA 필 버튼은 전부 **`#464646`** + 흰 글자 + **웨이트 400(Regular)**
 - 소셜 아이콘은 실제 Instagram 로고가 아니라 사이트 자체 아이콘 스타일(카메라 윤곽선, `assets/icon-instagram.svg`)로 새로 그림 — 채널 추가되면 같은 스타일로 아이콘 더 만들 것
 - **위치가 `.page` 밖이 아니라 `#creator-voices` 섹션 맨 끝(FAQ 다음)**: `.page` 바깥은 scroll-snap 때문에 스크롤로 도달 못 함(위 "통합 페이지 구조" 절 참고) — 기존에 있던 400px 여백(`#creator-voices { padding-bottom: 400px }`)을 이 푸터가 사실상 대신함
 - **처음엔 다크 배경(#2d2828)+흰 글자+동그라미 소셜 아이콘으로 만들었다가, 바로 다음 요청으로 4가지 다 바뀜**(직접 요청, 스크린샷 보고 확인 후): ① 배경색 없앰 → 페이지 나머지랑 같은 흰 배경, 그래서 글자색도 전부 사이트 기본색(`#2d2828`/`#7b7b7b`)으로 뒤집음, 로고 반전 필터(`brightness(0) invert(1)`)도 필요 없어져서 제거 ② 로고를 `assets/nav-icon.svg`(작은 별 아이콘)에서 hero-home 1번 이미지에 쓴 **"OHOUSE / SPECIAL CREATOR" 워드마크**(`assets/logo-ohouse-special-creator.svg`, 두 줄, 189×30px)로 교체 ③ 인스타그램 아이콘 동그라미 배경 제거, 아이콘만 노출(22px) ④ **너비를 `.header`에 정확히 맞춤** — `.header`는 `max-width` 없이 항상 좌우 36px 인셋이라(초광폭 모니터에서도), 처음엔 `.site-footer__inner`에 `max-width:1280px;margin:0 auto`를 같이 줬다가 1352px 넘는 화면에서 어긋나는 걸 발견해서 그 캡을 빼고 `padding:0 36px`만 남김 — 이제 어느 폭에서든 헤더 로고/Apply 버튼과 좌우 정확히 같은 x좌표(36px/뷰포트-36px)에 맞음
+- **FAQ → 푸터 간격 240px로 확대**(직접 요청, 웹 전용 — 예전 80px). `.site-footer`의 `padding-top`이 배경색 없는 지금은 그대로 "빈 간격"처럼 보여서 이 값 하나로 처리됨(`#creator-voices`의 기존 400px 하단 padding은 그대로 남아있어서, 지금은 푸터 다음에도 그 여백이 이어짐 — 필요하면 정리할 것)
 - **모바일은 아직 안 만듦** — `@media(max-width:900px)`에서 `.site-footer { display: none }`으로 통째로 숨겨둠. 나중에 모바일 버전 요청 오면 그때 만들 것
 - **다른 페이지(OU 상세 5개, 선물 상세, hero-home)에는 아직 안 넣음** — FindTheKey.html에만 있음. 디자인 확정되면 다른 페이지에도 넣을지 확인할 것
 
