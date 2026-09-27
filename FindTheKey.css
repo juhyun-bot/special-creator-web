@@ -2151,6 +2151,21 @@ body.ou-modal-open {
   height: 100%;
 }
 
+/* mobile-only header (see the markup comment in FindTheKey.html) — hidden
+   above the card breakpoint, since the small-card popup has no room or
+   need for it (the X close + arrows are enough there).
+   NOTE: every override below is written as ".ou-modal .ou-modal__header"
+   (two classes), not plain ".ou-modal__header" — ou-modal.js injects the
+   opened case study's own OpportunitiesUnlocked-0N.css into <head> AFTER
+   this file, and that stylesheet's plain ".header { position: fixed; ... }"
+   rule has the SAME specificity as a single-class ".ou-modal__header" rule
+   here, so it would silently win on load order alone (this is exactly what
+   was overriding position:sticky below with fixed, making the header float
+   over the content with no reserved layout space instead of pushing it down) */
+.ou-modal .ou-modal__header {
+  display: none;
+}
+
 @media (max-width: 900px) {
   .ou-modal {
     padding: 0;
@@ -2160,6 +2175,31 @@ body.ou-modal-open {
     aspect-ratio: auto;
     height: 100vh;
     overflow-y: auto;
+  }
+  /* height/padding/dropdown-offset pinned explicitly too (not just
+     display/position above) — same collision risk, since OU pages' own
+     .header rule sets height:105px/padding:15px 36px and their
+     .header__links dropdown sets top:105px, vs. this page's own 72px/
+     "0 36px"/top:72px. Whichever loaded first would otherwise leak through
+     here depending on which case study happens to be open */
+  .ou-modal .ou-modal__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    left: auto;
+    right: auto;
+    z-index: 5;
+    height: 72px;
+    padding: 0 24px;
+    background: #ffffff;
+  }
+  .ou-modal .ou-modal__header .header__menu-btn {
+    display: block;
+  }
+  .ou-modal .ou-modal__header .header__links {
+    top: 72px;
   }
   /* replaced by the injected .detail's own .detail__back-btn (뒤로가기),
      per direct request — no more X close on mobile */

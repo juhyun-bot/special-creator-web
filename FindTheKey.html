@@ -622,6 +622,28 @@
         <img src="assets/icon-close.svg" alt="">
       </button>
       <div class="ou-modal__scroll">
+        <!-- mobile-only: standalone OpportunitiesUnlocked-0N.html pages have the
+             site header above their .detail__back-btn, but this popup never did
+             (it only injects .detail) — direct request to add it here too, so a
+             separate copy with its own ids lives outside #ouModalContent (which
+             ou-modal.js clears/replaces on every open) and its own tiny toggle
+             script below, since header-menu.js's getElementById calls would
+             otherwise bind to the real page header behind this modal, not this one -->
+        <header class="header ou-modal__header" data-name="header">
+          <a href="hero-home.html" class="header__logo" aria-label="첫 화면으로 이동">
+            <img class="header__logo-icon" src="assets/nav-icon.svg" alt="">
+          </a>
+          <button type="button" class="header__menu-btn" id="ouModalMenuBtn" aria-label="메뉴 열기" aria-expanded="false" aria-controls="ouModalHeaderLinks">
+            <span class="header__menu-icon"></span>
+          </button>
+          <nav class="header__links" id="ouModalHeaderLinks">
+            <a href="FindTheKey.html" class="header__link header__link--off">About</a>
+            <a href="FindTheKey.html#opportunities-unlocked" class="header__link header__link--on">Opportunities</a>
+            <a href="FindTheKey.html#beyond-the-door" class="header__link header__link--off">Programs</a>
+            <a href="FindTheKey.html#creator-voices" class="header__link header__link--off">Voices</a>
+            <a href="https://ohou.se/competitions/1155" class="header__cta" target="_blank" rel="noopener">Apply</a>
+          </nav>
+        </header>
         <div class="ou-modal__content" id="ouModalContent"></div>
       </div>
     </div>

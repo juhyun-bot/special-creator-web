@@ -9,6 +9,26 @@
   const closeBtn = document.getElementById('ouModalClose');
   if (!modal || !content || !closeBtn) return;
 
+  // this popup's own mobile-only header + hamburger (see the markup comment
+  // in FindTheKey.html) — a plain copy of the site header, not touched by
+  // header-menu.js since that script's getElementById calls would grab the
+  // real page header behind this modal instead of this one
+  const modalHeader = modal.querySelector('.ou-modal__header');
+  const modalMenuBtn = document.getElementById('ouModalMenuBtn');
+  const modalHeaderLinks = document.getElementById('ouModalHeaderLinks');
+  if (modalHeader && modalMenuBtn && modalHeaderLinks) {
+    modalMenuBtn.addEventListener('click', () => {
+      const isOpen = modalHeader.classList.toggle('header--menu-open');
+      modalMenuBtn.setAttribute('aria-expanded', String(isOpen));
+    });
+    modalHeaderLinks.querySelectorAll('a').forEach((a) => {
+      a.addEventListener('click', () => {
+        modalHeader.classList.remove('header--menu-open');
+        modalMenuBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
   // above this width the popup is the small fixed-aspect card from the
   // Figma mockup (node 181:588), rendered at NATURAL_WIDTH then scaled down
   // to fit — .detail's own layout uses fixed px values (padding, font-size)
@@ -60,6 +80,10 @@
     document.body.classList.remove('ou-modal-open');
     content.innerHTML = '';
     currentDetail = null;
+    if (modalHeader) {
+      modalHeader.classList.remove('header--menu-open');
+      modalMenuBtn?.setAttribute('aria-expanded', 'false');
+    }
   }
 
   function isDetailHref(href) {
