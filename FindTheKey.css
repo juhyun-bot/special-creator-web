@@ -2014,11 +2014,6 @@ body.is-fullframe-hero .down-hint img {
   }
 }
 
-@media (max-width: 600px) {
-  .cv-outro br {
-    display: none;
-  }
-}
 
 /* ==========================================================================
    Opportunities Unlocked case-study popup (ou-modal.js) — clicking an
@@ -2561,14 +2556,45 @@ body.ou-modal-open {
     padding-right: 24px;
   }
 
-  /* 웹 전용(직접 요청) — 모바일 버전은 아직 안 만듦 */
+  /* 모바일 푸터, 직접 요청 — newmixcoffee.com/ko 모바일 버전 참고(로고+소셜
+     아이콘+저작권만 남기고 메뉴/오피스 정보는 뺀 단순한 구성). 간격은 데스크톱
+     240px/줄/20px 패턴을 모바일 스케일로 축소 */
   .site-footer {
+    margin-top: 80px;
+    padding: 16px 0 32px;
+  }
+  .site-footer__inner {
+    padding: 0 24px;
+  }
+  .site-footer__top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    padding-bottom: 32px;
+  }
+  .site-footer__logo {
+    width: 145px;
+    height: 23px;
+  }
+  .site-footer__contact {
+    font-size: 14px;
+  }
+  .site-footer__social-icon img {
+    width: 20px;
+    height: 20px;
+  }
+  /* newmix 모바일 버전처럼 메뉴/오피스 정보는 생략 */
+  .site-footer__nav,
+  .site-footer__office {
     display: none;
   }
+  .site-footer__bottom p {
+    font-size: 13px;
+  }
 
-  /* 모바일엔 푸터가 없어서(위 display:none) 이 400px이 계속 필요함 — 데스크톱은
-     이제 진짜 푸터가 이 역할을 대신해서 base 규칙에서 뺌(직접 요청) */
+  /* 모바일도 이제 진짜 푸터가 페이지 끝 역할을 하므로 이 400px은 필요 없음
+     (데스크톱과 같은 이유로 뺌 — 위 "데스크톱" 관련 커밋 참고) */
   #creator-voices {
-    padding-bottom: 400px;
+    padding-bottom: 0;
   }
 }
