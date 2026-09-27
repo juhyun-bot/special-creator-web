@@ -2373,6 +2373,13 @@ body.ou-modal-open {
     font-size: 22px;
     letter-spacing: -0.11px;
   }
+  /* 통계 위 문구("스페셜 크리에이터의 이야기는...")만 따로 — .btd-middle__desc를
+     BTD 섹션 다른 곳에서도 공유하므로 거기까진 안 건드리게 .stats-intro로 스코프.
+     "그 의미를 담아..."(.insight--after-trophy, 모바일 20px)랑 크기 맞춤(직접 요청) */
+  .stats-intro .btd-middle__desc {
+    font-size: 20px;
+    letter-spacing: -0.1px;
+  }
 
   /* the journey rows stack in a column here, but the base rule's
      align-items:flex-start stopped the rolling marquee from stretching to the
