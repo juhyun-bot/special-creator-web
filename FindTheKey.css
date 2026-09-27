@@ -478,6 +478,13 @@ body.is-fullframe-hero .down-hint img {
   display: none;
 }
 
+/* mobile-only break after "시선과" instead of letting the line overflow-wrap
+   mid-word inside "이야기를" (직접 요청, 확인 후) — desktop's line is short
+   enough on its own 27px/1-line width and doesn't need this */
+.cv-outro br.mobile-break {
+  display: none;
+}
+
 .hero__subtitle {
   font-size: 21px;
   font-weight: 400;
@@ -2344,6 +2351,9 @@ body.ou-modal-open {
   .hero__title br.mobile-break {
     display: inline;
   }
+  .cv-outro br.mobile-break {
+    display: inline;
+  }
 
   /* every About text element, mobile only — 20px per direct request (not
      tied to the 5-step scale below). Was briefly unified at 26px (matching
@@ -2567,10 +2577,15 @@ body.ou-modal-open {
     padding: 0 24px;
   }
   .site-footer__top {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 20px;
     padding-bottom: 32px;
+  }
+  /* 왼쪽 로고 - 오른쪽 인스타 아이콘, 한 줄로(직접 요청 — 원래 로고 밑에
+     세로로 쌓여 있던 걸 가로 배치로 바꿈) */
+  .site-footer__brand {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
   }
   .site-footer__logo {
     width: 145px;
