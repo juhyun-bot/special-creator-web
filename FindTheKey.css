@@ -423,7 +423,8 @@ body.is-fullframe-hero .down-hint img {
     justify-content: flex-start;
     gap: 0;
     background: #fbfde4;
-    padding: 112px 24px 40px;
+    /* 헤더(72px) + 여유 16px — 직접 요청으로 위쪽 여백 축소(예전 112px = 72 + 40) */
+    padding: 88px 24px 40px;
     opacity: 0;
     pointer-events: none;
     overflow-y: auto;
