@@ -136,14 +136,15 @@ html {
   padding: 35px 35px 0;
 }
 
-/* the page's bottom breathing room lives INSIDE the last section, not on
-   .page: with mandatory scroll-snap, the last section's snap area ends at
-   its own bottom edge, so anything below it (the old 400px .page padding)
-   was unreachable — scrolling stopped with the apply button flush against
-   the bottom of the window */
-#creator-voices {
-  padding-bottom: 400px;
-}
+/* the page's bottom breathing room used to live INSIDE the last section as
+   a flat 400px (not on .page: with mandatory scroll-snap, the last
+   section's snap area ends at its own bottom edge, so anything below it —
+   the old 400px .page padding — was unreachable, leaving the apply button
+   flush against the window's bottom edge). Desktop no longer needs that
+   400px itself now that the real footer supplies its own reachable space
+   (240px/32px top/bottom padding) — the rule moved into the mobile media
+   query below, since mobile still has no footer (.site-footer is
+   display:none there) and still needs the same reachable bottom space */
 
 /* opaque backdrop band behind the header (blocks scrolled content), built
    from the exact same gradient + grain as .bg-gradient-anim/.bg-grain via
@@ -2557,5 +2558,11 @@ body.ou-modal-open {
   /* 웹 전용(직접 요청) — 모바일 버전은 아직 안 만듦 */
   .site-footer {
     display: none;
+  }
+
+  /* 모바일엔 푸터가 없어서(위 display:none) 이 400px이 계속 필요함 — 데스크톱은
+     이제 진짜 푸터가 이 역할을 대신해서 base 규칙에서 뺌(직접 요청) */
+  #creator-voices {
+    padding-bottom: 400px;
   }
 }
