@@ -2204,9 +2204,13 @@ body.ou-modal-open {
   margin-left: -50vw;
   margin-right: -50vw;
   color: #2d2828;
-  /* FAQ -> 푸터 간격 240px 이상(직접 요청, 웹 전용 — 예전 80px) */
-  padding: 240px 0 32px;
-  /* 푸터 시작을 표시하는 구분선(직접 요청) — 사이트 전반의 옅은 구분선과 같은 톤 */
+  /* 순서 FAQ -> 240px 여백 -> 구분선 -> 20px 여백 -> 푸터(직접 요청, 웹 전용).
+     border-top은 항상 박스의 맨 위 가장자리에 붙어서 padding-top으로는 안
+     밀려나므로, 그 240px는 margin-top으로 옮기고 padding-top은 선 다음
+     20px만 남김(처음엔 둘 다 padding-top 240px 하나에 있어서 선이 FAQ
+     바로 밑에 붙어버렸었음) */
+  margin-top: 240px;
+  padding: 20px 0 32px;
   border-top: 1px solid rgba(45, 40, 40, 0.1);
 }
 
