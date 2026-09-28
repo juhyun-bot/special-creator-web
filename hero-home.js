@@ -56,12 +56,34 @@
   // "Click me" normally only shows on mousemove/mouseenter, which never fire on a
   // touch device — so on mobile, nothing ever hints that the key is tappable. Once
   // next-section has settled in, park the badge at the key's own center and show it
-  // without waiting for a hover that will never come.
-  function showAutoClickBadge() {
-    if (!keyLink || !cursorBadge) return;
+  // without waiting for a hover that will never come. Desktop gets the same hint if the
+  // pointer hasn't been over the key for a second (see scheduleAutoBadge), so the key
+  // doesn't sit there unlabelled until someone happens to hover it.
+  const AUTO_BADGE_DELAY_MS = 1000;
+  let hoveringKey = false;
+  let autoBadgeShown = false;
+
+  function parkBadgeOnKey() {
     const rect = keyLink.getBoundingClientRect();
     cursorBadge.style.transform = `translate(${rect.left + rect.width / 2}px, ${rect.top + rect.height / 2}px) translate(-50%, -50%)`;
+  }
+
+  function showAutoClickBadge() {
+    if (!keyLink || !cursorBadge || hoveringKey) return;
+    parkBadgeOnKey();
     cursorBadge.classList.add('is-visible');
+    autoBadgeShown = true;
+  }
+
+  function hideAutoClickBadge() {
+    clearTimeout(autoBadgeTimer);
+    if (autoBadgeShown && cursorBadge) cursorBadge.classList.remove('is-visible');
+    autoBadgeShown = false;
+  }
+
+  function scheduleAutoBadge() {
+    clearTimeout(autoBadgeTimer);
+    autoBadgeTimer = setTimeout(showAutoClickBadge, AUTO_BADGE_DELAY_MS);
   }
 
   function triggerLogoJolt() {
@@ -159,17 +181,24 @@
     if (nextSection) {
       const showNext = isComplete && holdProgress >= 0.9;
       nextSection.classList.toggle('is-visible', showNext);
-      // mobile only (matches MOBILE_HINT_BREAKPOINT) — on desktop the badge already
-      // works fine via hover, an auto-popup there would just be redundant/distracting
-      if (showNext !== wasNextVisible) {
-        clearTimeout(autoBadgeTimer);
-        if (showNext && window.innerWidth <= MOBILE_HINT_BREAKPOINT) {
-          autoBadgeTimer = setTimeout(showAutoClickBadge, 1000);
-        } else if (!showNext && cursorBadge) {
-          cursorBadge.classList.remove('is-visible');
-        }
-        wasNextVisible = showNext;
+      // the hint is only wanted once the key itself is actually on screen — the section
+      // fades in a bit before the (tall) key has scrolled into view on wide windows
+      let keyOnScreen = false;
+      if (showNext && keyLink) {
+        const kr = keyLink.getBoundingClientRect();
+        const cy = kr.top + kr.height / 2;
+        keyOnScreen = cy > window.innerHeight * 0.1 && cy < window.innerHeight * 0.95;
       }
+      if (keyOnScreen !== wasNextVisible) {
+        if (keyOnScreen) {
+          if (!hoveringKey) scheduleAutoBadge();
+        } else {
+          hideAutoClickBadge();
+        }
+        wasNextVisible = keyOnScreen;
+      }
+      // the parked badge is position:fixed, so keep it on the key while scrolling
+      if (autoBadgeShown && !hoveringKey) parkBadgeOnKey();
     }
 
     stage.style.pointerEvents = progress >= 1 ? 'none' : 'auto';
@@ -199,10 +228,17 @@
       cursorBadge.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
     });
     keyLink.addEventListener('mouseenter', () => {
+      hoveringKey = true;
+      clearTimeout(autoBadgeTimer);
+      autoBadgeShown = false;
       cursorBadge.classList.add('is-visible');
     });
     keyLink.addEventListener('mouseleave', () => {
+      hoveringKey = false;
       cursorBadge.classList.remove('is-visible');
+      // pointer left the key: bring the parked hint back after another second, as long as
+      // the key section is still on screen
+      if (wasNextVisible) scheduleAutoBadge();
     });
   }
 })();
