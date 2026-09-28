@@ -24,7 +24,11 @@ function initPhotoCarousel(root) {
   const track = root.querySelector('#photoTrack');
   if (!track) return;
 
-  const slides = Array.from(track.children);
+  // only the photo slides — OU-05's track also holds a .detail__photo-link after
+  // every photo (mobile-only, the link shown under each stacked photo), and counting
+  // those as slides made the arrows step through 12 items: every other click blanked
+  // the photo and the desktop link drifted out of step with the photo
+  const slides = Array.from(track.querySelectorAll(':scope > .detail__photo-slide'));
   let index = slides.findIndex((el) => el.classList.contains('is-active'));
   if (index < 0) index = 0;
 
