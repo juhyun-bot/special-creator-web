@@ -62,7 +62,7 @@ git push                             # 1~2분 뒤 배포본에 반영
 
 ## 4. Claude로 이어서 작업하기
 
-> **자세한 순서·요청 예시·막힐 때 해결법은 [CLAUDE-WORKFLOW.md](CLAUDE-WORKFLOW.md)에 따로 정리했습니다.** 아래는 요약입니다.
+> **자세한 순서·요청 예시·막힐 때 해결법은 [CLAUDE-WORKFLOW.md](CLAUDE-WORKFLOW.md)에, git에서 받는 방법과 페이지 내용을 실제로 수정하는 방법은 [HOW-TO-EDIT.md](HOW-TO-EDIT.md)에 따로 정리했습니다.** 아래는 요약입니다.
 
 이 저장소에는 [CLAUDE.md](CLAUDE.md)가 있어서, **Claude Code로 이 폴더를 열면 프로젝트 규칙과 문서 위치를 자동으로 읽습니다.**
 
@@ -157,6 +157,7 @@ assets/                   이미지 (구조·규칙: ASSETS.md)
 scripts/check-assets.py   이미지 경로 점검
 CLAUDE.md                 Claude용 프로젝트 규칙 (자동으로 읽힘)
 CLAUDE-WORKFLOW.md        Claude로 이어서 수정하는 방법 (시작 순서·요청 예시·해결법)
+HOW-TO-EDIT.md            git에서 받아 Claude로 여는 방법 + 페이지 내용 수정 레시피 (초보자용)
 README.md                 상세 기록 (디자인 규칙·스크롤 동작·이력)
 ```
 

@@ -1,6 +1,6 @@
 # Claude로 이어서 수정하기
 
-이 저장소를 받은 사람이 **Claude Code에게 일을 시키면서** 사이트를 계속 고칠 수 있도록 쓴 가이드입니다. 프로젝트 자체 설명은 [HANDOVER.md](HANDOVER.md), 이미지 규칙은 [ASSETS.md](ASSETS.md)에 있습니다.
+이 저장소를 받은 사람이 **Claude Code에게 일을 시키면서** 사이트를 계속 고칠 수 있도록 쓴 가이드입니다. 프로젝트 자체 설명은 [HANDOVER.md](HANDOVER.md), 이미지 규칙은 [ASSETS.md](ASSETS.md), **git에서 받는 방법과 문구·숫자·링크를 실제로 고치는 방법은 [HOW-TO-EDIT.md](HOW-TO-EDIT.md)** 에 있습니다.
 
 ## 먼저 알아둘 것
 

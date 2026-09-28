@@ -5,7 +5,7 @@
 다른 컴퓨터에서 Claude(또는 사람)가 이어서 작업할 때 필요한 배경 설명을 정리해둔 문서입니다.
 (git으로는 코드만 넘어가고, 대화 맥락은 넘어가지 않아서 남겨둡니다.)
 
-> **처음 받는 사람은 이 문서 대신 [HANDOVER.md](HANDOVER.md)부터** 읽으세요(시작·수정·배포·계정 체크리스트). 이미지 교체는 [ASSETS.md](ASSETS.md), Claude로 이어서 수정하는 방법은 [CLAUDE-WORKFLOW.md](CLAUDE-WORKFLOW.md), Claude용 규칙은 [CLAUDE.md](CLAUDE.md). 이 README는 디자인 수치·스크롤 동작·변경 이력을 담은 **상세 레퍼런스**입니다. 아래 일부 절에는 그때그때의 옛 수치가 남아 있으니, `⚠️ 옛 값`으로 표시된 곳은 그 표시를 우선하고 애매하면 실제 CSS/JS 값이 정답입니다.
+> **처음 받는 사람은 이 문서 대신 [HANDOVER.md](HANDOVER.md)부터** 읽으세요(시작·수정·배포·계정 체크리스트). 이미지 교체는 [ASSETS.md](ASSETS.md), Claude로 이어서 수정하는 방법은 [CLAUDE-WORKFLOW.md](CLAUDE-WORKFLOW.md), git에서 받는 방법·페이지 내용 수정 방법은 [HOW-TO-EDIT.md](HOW-TO-EDIT.md), Claude용 규칙은 [CLAUDE.md](CLAUDE.md). 이 README는 디자인 수치·스크롤 동작·변경 이력을 담은 **상세 레퍼런스**입니다. 아래 일부 절에는 그때그때의 옛 수치가 남아 있으니, `⚠️ 옛 값`으로 표시된 곳은 그 표시를 우선하고 애매하면 실제 CSS/JS 값이 정답입니다.
 
 > **먼저 읽을 것**: 사이트의 실제 메인은 **`FindTheKey.html` 한 장짜리 통합 스크롤 페이지**입니다 (About → Opportunities → Programs → Voices). 새 디자인 수정은 전부 `FindTheKey.html`/`FindTheKey.css`에 들어갑니다. `index.html`은 **`hero-home.html`(열쇠구멍 첫 화면)로 리다이렉트** — 방문자는 거기서 스크롤/클릭으로 `FindTheKey.html`로 넘어감 (예전엔 `index.html`이 바로 `FindTheKey.html`로 갔음, 첫 화면을 hero-home으로 둘지 결정 보류였다가 확정됨). 예전에 섹션별로 따로 만들었던 목록 페이지들(`OpportunitiesUnlocked.html`/`BeyondTheDoor.html`/`CreatorVoices.html`)은 아무 데서도 링크가 안 걸려 방문자가 볼 방법이 없어서 **삭제함** — 아래 "파일 구조" 참고.
 
@@ -15,6 +15,7 @@
 index.html                                     hero-home.html로 리다이렉트 (사이트 진입점)
 HANDOVER.md / ASSETS.md / CLAUDE.md            인수인계 문서 / 이미지 폴더·파일명 규칙 / Claude용 프로젝트 규칙
 CLAUDE-WORKFLOW.md                             Claude Code로 이어서 수정하는 방법 (시작 순서·요청 예시·막힐 때)
+HOW-TO-EDIT.md                                 git에서 받아 Claude로 여는 방법 + 페이지 내용 수정 방법 (초보자용)
 scripts/check-assets.py                        push 전 이미지 경로 점검 (없는 파일·대소문자 불일치·안 쓰는 파일·큰 파일)
 FindTheKey.html / FindTheKey.css               ★ 메인 통합 페이지 (섹션 4개, CSS 한 파일에 전부)
 hero-home.html / .css / .js                    열쇠구멍 스크롤 첫 화면 (헤더 로고가 여기로 연결)
