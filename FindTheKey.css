@@ -2348,8 +2348,8 @@ body.ou-modal-open {
   /* section-hero title, mobile only — 22px per direct request (briefly
      20px, that read as too small; was 26px, the Display tier, originally) */
   .hero__title {
-    font-size: 22px;
-    letter-spacing: -0.11px;
+    font-size: clamp(14px, 5.15vw, 32px);
+    letter-spacing: -0.005em;
   }
   .hero__title br.mobile-break {
     display: inline;
@@ -2365,16 +2365,16 @@ body.ou-modal-open {
   .about-heading,
   .insight,
   .about-key-photo {
-    font-size: 20px;
-    letter-spacing: -0.1px;
+    font-size: clamp(13px, 4.7vw, 30px);
+    letter-spacing: -0.005em;
   }
 
   /* "스페셜 크리에이터는 집과 일상을" only, mobile only — bumped up from the
      20px group above per direct request. Same specificity as .about-heading
      above (single class), so this must stay declared after it to win */
   .about-heading--intro {
-    font-size: 22px;
-    letter-spacing: -0.11px;
+    font-size: clamp(14px, 5.15vw, 32px);
+    letter-spacing: -0.005em;
   }
 
   /* section hero: tighter title -> intro gap on phones (40px on desktop); intro is 18 (its
@@ -2392,14 +2392,14 @@ body.ou-modal-open {
   /* ② Title 22 */
   .btd-middle__title,
   .faq__title {
-    font-size: 22px;
-    letter-spacing: -0.11px;
+    font-size: clamp(14px, 5.15vw, 32px);
+    letter-spacing: -0.005em;
   }
   /* .cv-outro는 이 그룹에서 빠져서 .btd-middle__desc 세 곳이랑 같은 20px로
      맞춤(직접 요청) — 원래 이 그룹(Title 22)에 있었음 */
   .cv-outro {
-    font-size: 20px;
-    letter-spacing: -0.1px;
+    font-size: clamp(13px, 4.7vw, 30px);
+    letter-spacing: -0.005em;
   }
 
   /* ③ Subtitle 18 */
@@ -2541,8 +2541,8 @@ body.ou-modal-open {
      문구) 전부 20px로 통일 — "그 의미를 담아..."(.insight--after-trophy, 모바일
      20px)랑 크기 맞춤(직접 요청, 기존 22px가 상대적으로 커 보임) */
   .btd-middle__desc {
-    font-size: 20px;
-    letter-spacing: -0.1px;
+    font-size: clamp(13px, 4.7vw, 30px);
+    letter-spacing: -0.005em;
   }
 
   /* the journey rows stack in a column here, but the base rule's
