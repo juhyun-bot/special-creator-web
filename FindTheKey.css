@@ -870,7 +870,7 @@ body.is-fullframe-hero .down-hint img {
    601-900px was silently falling back to no padding at all here */
 @media (max-width: 900px) {
   .about-key-photo__text {
-    padding: 24px;
+    padding: 10px;
   }
 }
 
@@ -2348,7 +2348,7 @@ body.ou-modal-open {
   /* section-hero title, mobile only — 22px per direct request (briefly
      20px, that read as too small; was 26px, the Display tier, originally) */
   .hero__title {
-    font-size: clamp(14px, 5.15vw, 32px);
+    font-size: clamp(12px, 4.45vw, 30px);
     letter-spacing: -0.005em;
   }
   .hero__title br.mobile-break {
@@ -2365,7 +2365,7 @@ body.ou-modal-open {
   .about-heading,
   .insight,
   .about-key-photo {
-    font-size: clamp(13px, 4.7vw, 30px);
+    font-size: clamp(12px, 4.3vw, 30px);
     letter-spacing: -0.005em;
   }
 
@@ -2385,8 +2385,8 @@ body.ou-modal-open {
   /* section-hero subtitle (본문), mobile only — 14px per direct request
      (briefly 13px, that read as too small; was 18px originally) */
   .hero__subtitle {
-    font-size: 14px;
-    letter-spacing: -0.07px;
+    font-size: clamp(10px, 3.3vw, 18px);
+    letter-spacing: -0.005em;
   }
 
   /* ② Title 22 */
@@ -2398,7 +2398,7 @@ body.ou-modal-open {
   /* .cv-outro는 이 그룹에서 빠져서 .btd-middle__desc 세 곳이랑 같은 20px로
      맞춤(직접 요청) — 원래 이 그룹(Title 22)에 있었음 */
   .cv-outro {
-    font-size: clamp(13px, 4.7vw, 30px);
+    font-size: clamp(12px, 4.3vw, 30px);
     letter-spacing: -0.005em;
   }
 
@@ -2413,7 +2413,6 @@ body.ou-modal-open {
 
   /* ④ Body 15 */
   .trophy-hint,
-  .btd-journey__desc,
   .cv-apply,
   .faq__question,
   .faq__answer p,
@@ -2423,6 +2422,12 @@ body.ou-modal-open {
   .header__cta {
     font-size: 15px;
     letter-spacing: -0.075px;
+  }
+  /* journey step descriptions carry hand-set <br> lines — scale with the
+     phone width (max 15px, the Body tier) so those lines never re-wrap */
+  .btd-journey__desc {
+    font-size: clamp(12px, 4.2vw, 15px);
+    letter-spacing: -0.005em;
   }
   /* .cv-row__body는 이 그룹에서 빠져서 14px로 따로(직접 요청, 웨이트는
      기존 400 그대로) */
@@ -2541,7 +2546,7 @@ body.ou-modal-open {
      문구) 전부 20px로 통일 — "그 의미를 담아..."(.insight--after-trophy, 모바일
      20px)랑 크기 맞춤(직접 요청, 기존 22px가 상대적으로 커 보임) */
   .btd-middle__desc {
-    font-size: clamp(13px, 4.7vw, 30px);
+    font-size: clamp(12px, 4.3vw, 30px);
     letter-spacing: -0.005em;
   }
 
