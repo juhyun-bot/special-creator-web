@@ -2361,11 +2361,19 @@ body.ou-modal-open {
      inconsistency; that read as too large, so this drops the whole group to
      20px instead, still all one size, just smaller */
   .about-heading.about-heading--blur-in,
-  .about-photo__caption,
   .about-heading,
   .insight,
   .about-key-photo {
     font-size: clamp(12px, 4.3vw, 30px);
+    letter-spacing: -0.005em;
+  }
+
+  /* hero-roll caption is one long unbroken line ("집과 일상을 자신만의 시선으로
+     바라보고") inside a photo box that has side padding, so it gets a slightly
+     smaller vw ratio than the rest of the About group to stay on one line
+     down to 320px */
+  .about-photo__caption {
+    font-size: clamp(11px, 4vw, 30px);
     letter-spacing: -0.005em;
   }
 
