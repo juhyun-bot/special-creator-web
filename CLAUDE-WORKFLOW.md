@@ -18,8 +18,8 @@
 
 1. **저장소 받기** (터미널):
    ```bash
-   git clone <저장소 주소>
-   cd <받은 폴더>
+   git clone https://github.com/juhyun-bot/special-creator-web.git
+   cd special-creator-web
    ```
    이미 받아둔 적이 있으면 `git pull`만 하면 됩니다.
 2. **그 폴더를 Claude Code로 열기.** (데스크톱 앱이면 Code 탭에서 폴더 선택, 터미널이면 그 폴더 안에서 `claude`)

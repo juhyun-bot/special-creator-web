@@ -10,9 +10,10 @@
 
 | | |
 |---|---|
-| 배포 주소 (메인) | https://sarahkim-bucketplace.github.io/special-creator/FindTheKey.html |
-| 배포 주소 (첫 화면) | https://sarahkim-bucketplace.github.io/special-creator/hero-home.html — 루트 주소도 여기로 이동 |
-| 저장소 | https://github.com/sarahkim-bucketplace/special-creator (public, 브랜치 `main`) |
+| 배포 주소 (메인) | https://juhyun-bot.github.io/special-creator-web/FindTheKey.html |
+| 배포 주소 (첫 화면) | https://juhyun-bot.github.io/special-creator-web/hero-home.html — 루트 주소(https://juhyun-bot.github.io/special-creator-web/)도 여기로 이동 |
+| 저장소 | https://github.com/juhyun-bot/special-creator-web (public, 브랜치 `main`). 2026-09-28에 아래 옛 저장소에서 히스토리 그대로 옮김 |
+| 옛 저장소 (임시 유지) | https://github.com/sarahkim-bucketplace/special-creator — 옛 배포 주소 `https://sarahkim-bucketplace.github.io/special-creator/`가 아직 살아 있음. 새 주소로 교체가 끝나기 전엔 지우지 말 것 |
 | 디자인 원본 | Figma 파일 키 `NoZZ6mYgg5AZpr5MxwhzOw` (주요 노드 ID는 README "Figma 소스") |
 | 신청 링크 | https://ohou.se/competitions/1155 |
 | 인스타그램 | https://www.instagram.com/ohouse_creator/ |
@@ -24,8 +25,8 @@
 **준비물**: git, 파이썬 3(맥에 기본 설치), 크롬. (Claude Code 사용 시 아래 4번 참고)
 
 ```bash
-git clone https://github.com/sarahkim-bucketplace/special-creator.git
-cd special-creator
+git clone https://github.com/juhyun-bot/special-creator-web.git
+cd special-creator-web
 python3 -m http.server 5173
 ```
 
@@ -83,8 +84,8 @@ git push                             # 1~2분 뒤 배포본에 반영
 
 ## 6. 계정·권한 체크리스트 (담당자가 바뀔 때 꼭 확인)
 
-- [ ] **GitHub 저장소 소유권** — 지금 저장소는 개인 성격 계정(`sarahkim-bucketplace`) 아래에 있습니다. **이 계정이 사라지면 저장소도 배포도 같이 사라집니다.** 새 담당자/회사 계정으로 옮기세요(아래 "저장소 옮기기" 참고).
-- [ ] **GitHub Pages 설정** — 옮긴 저장소의 Settings → Pages에서 배포 소스가 `main` 브랜치 루트인지 확인(옮긴 뒤 새로 켜야 할 수 있음). **저장소 주소가 바뀌면 배포 주소도 바뀝니다**(`<새 계정>.github.io/<저장소명>/`). 예전 주소는 자동으로 넘어가지 않으니 이 주소를 공유한 곳(사내 문서·슬랙·메일 등)은 새 주소로 교체해야 합니다.
+- [x] **GitHub 저장소 소유권** — 2026-09-28에 `sarahkim-bucketplace/special-creator` → **`juhyun-bot/special-creator-web`** 으로 옮겼습니다(아래 "저장소 옮기기"의 완료 기록). ⚠️ `juhyun-bot`도 **개인(Personal) 계정**이라, 이 계정이 사라지면 저장소와 배포가 같이 사라지는 위험은 같습니다. 회사 GitHub 조직(organization)이 있다면 그 아래로 한 번 더 옮기거나(Settings → Danger Zone → Transfer ownership) 담당자를 협업자로 추가해 두세요.
+- [ ] **옛 배포 주소를 공유한 곳 교체** — GitHub Pages는 `main` 브랜치 루트로 켜져 있고 새 주소에서 정상 동작을 확인했습니다(2026-09-28, 이미지 203개·페이지 12개 전부 200). 다만 예전 주소(`sarahkim-bucketplace.github.io/special-creator/`)는 **자동으로 넘어가지 않으므로**, 그 주소를 공유한 곳(사내 문서·슬랙·메일·SNS 프로필 등)은 새 주소로 직접 교체해야 합니다.
 - [ ] **원본 사진 폴더 (⚠️ 저장소에 없음)** — 웹에 올린 사진의 **원본·정리본은 git에 없고 담당자 iCloud Drive에만 있습니다**(`오늘의집/스페셜 클래스 웹페이지/assets/` 아래 `01. About`, `02. oppotunities`, `03. program` 등). 이 폴더를 **사내 공유 드라이브로 옮겨 새 담당자에게 공유**하세요. 저장소 안 사진 중 상당수는 줄여서 올린 것이라 원본이 없으면 화질을 다시 살릴 수 없고, 사진 교체 작업의 출발점(예: 선물 사진은 `번호-크리에이터이름.jpg`로 정리해 둔 폴더가 곧 소스였고 그 이름이 `Photo by.` 출처가 됨)도 이 폴더입니다.
 - [ ] **Figma** — 파일 `NoZZ6mYgg5AZpr5MxwhzOw`에 새 담당자를 초대(편집 또는 보기 권한). 사진·디자인 확정은 Figma 기준입니다.
 - [ ] **신청 링크** `ohou.se/competitions/1155`가 이번 모집에 유효한지. 모집 회차가 바뀌면 3번 표대로 10개 파일을 같이 교체.
@@ -93,6 +94,10 @@ git push                             # 1~2분 뒤 배포본에 반영
 - [ ] **커밋 작성자 정보** — 히스토리(커밋 350여 개)에 작성자 이름·이메일이 남아 있습니다(회사 이메일 형식 1종, 개인 PC 이름이 들어간 로컬 이메일 형식 1종). 그대로 옮겨도 동작엔 문제 없지만, 이런 정보가 새 저장소에 따라가는 게 싫으면 아래 "저장소 옮기기 B안"(히스토리 없이 시작)을 쓰세요.
 
 ## 7. 저장소 옮기기 (다른 git으로)
+
+> **✅ 완료 기록 (2026-09-28)**: A안(히스토리 그대로)으로 `sarahkim-bucketplace/special-creator` → `juhyun-bot/special-creator-web`으로 옮겼습니다. 커밋 356개·약 392MB가 그대로 올라갔고, 새 저장소의 `main`이 옛 저장소와 **같은 커밋 `250aaaa`** 임을 확인했습니다. Pages를 새로 켜고(`main` / root) 새 주소에서 이미지 203개·페이지 12개가 모두 열리는 것을 확인했습니다. 옛 저장소는 그대로 남아 있습니다(위 표 참고) — 새 주소로 교체가 끝난 뒤 정리하세요.
+> 아래는 **다른 곳으로 다시 옮길 때** 참고할 방법입니다.
+> 💡 이번에 push할 때 겪은 것: 이 컴퓨터 키체인에 옛 계정 토큰이 저장돼 있어서, 다른 계정 저장소로 push할 땐 `git -c credential.helper= push -u origin main`처럼 저장된 인증을 건너뛰고 새 계정의 토큰을 직접 입력했습니다(저장된 인증이 실패하면 키체인 항목이 지워질 수 있기 때문). 첫 시도는 토큰의 **Contents 권한이 Read and write가 아니라서 403**으로 실패했고, 권한을 고친 새 토큰으로 성공했습니다.
 
 **A안 — 히스토리 그대로 옮기기 (권장)**: 커밋 기록·"누가 언제 뭘 바꿨나"가 그대로 이어집니다.
 
