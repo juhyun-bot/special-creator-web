@@ -22,7 +22,7 @@
 - **큰 파트(섹션/블록) 사이 세로 간격의 기본값은 340px.** 새 섹션을 만들 때, 또는 간격 조정 요청에 구체적 숫자가 없을 때 적용. 단 **기존 간격을 일괄로 340px로 바꾸지 말 것** — 사용자가 좁다고 짚은 곳이나 새 작업에만 적용하고, Figma가 정확한 값을 준 구간은 그 값을 따름. (이미 README에 정리된 의도적 예외 값들이 있음: 로고월→통계 250px, 갤러리→선물 600px 등)
 - **스크롤 연출(`*-pause.js`, `about-*.js`, `hero-home.js`)을 고칠 땐** README의 "통합 페이지 구조와 스크롤 동작" 절을 먼저 읽을 것. 새 멈춤 지점은 `viewport.js`의 `markPauseUnlock()`/`pauseSafeToTrigger()` 패턴을 따르고, About의 높이 계산엔 `window.innerHeight` 대신 `window.effVH()`를 쓴다. `hero-home.css`의 `.hero-pin` 높이와 `hero-home.js`의 `REVEAL_VH`는 항상 같이 변경.
 - **모바일**(≤900px)은 `FindTheKey.css` 맨 끝 `@media` 블록에서만 수정. 큰 글자는 `clamp()`로 화면 폭에 비례하고 손으로 넣은 `<br>` 줄바꿈은 유지되므로, 문구를 바꾸면 가장 긴 줄이 320px 폭에서도 안 꺾이는지 다시 측정.
-- 헤더·Apply 링크(`ohou.se/competitions/1155`)는 **여러 파일에 복사돼 있음** — 바꾸면 `grep -rn`으로 전부 찾아 같이 수정.
+- 헤더·Apply 링크(`ohou.se/competitions/1155`)는 **여러 파일에 복사돼 있음** — 바꾸면 `grep -rn`으로 전부 찾아 같이 수정. 선물 상세 4개 페이지(`BeyondTheDoor-gift1~4.html`)와 OU 상세 5개 페이지도 같은 마크업(헤더, 모바일 뒤로가기 버튼)을 각자 복사해 갖고 있어서 한 곳만 고치면 안 됨.
 - 사진의 `Photo by. 이름` 출처 문구는 코드에 직접 적힌 글자. 사진을 바꾸면 출처도 같이 바꾼다(About 롤링은 `about-hero-roll.js`의 `CREDITS` 배열과 `hero-home.html`의 3줄도).
 - 비밀키·토큰은 어떤 파일·커밋에도 넣지 않는다.
 

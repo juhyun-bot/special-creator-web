@@ -51,7 +51,7 @@ git push                             # 1~2분 뒤 배포본에 반영
 | **헤더 메뉴** 라벨/링크 | 헤더가 페이지마다 **복사돼 있음** — `FindTheKey.html` + `OpportunitiesUnlocked-01~05.html` + `BeyondTheDoor-gift1~4.html` 전부 같이 수정 |
 | **Opportunities 카드** 제목·부제 | `FindTheKey.html`의 `.ou-card__title` / `.ou-card__sub` |
 | **OU 상세 팝업** 제목·본문·이전/다음 | `OpportunitiesUnlocked-0N.html` (`.detail__title`, `.detail__body`). 05번만 사진마다 링크가 바뀜 → ASSETS.md |
-| **선물 상세 페이지** | `BeyondTheDoor-gift1~4.html` |
+| **선물 상세 페이지** | `BeyondTheDoor-gift1~4.html` — 사진 그리드와 모바일 뒤로가기 버튼(`#giftBackBtn`) 마크업이 **4개 파일에 똑같이 복사**돼 있으니 바꿀 땐 4개 다. 스타일은 `BeyondTheDoor-gift.css`, 버튼 동작은 `gift-detail-reveal.js` |
 | **푸터** (주소·인스타·저작권) | `FindTheKey.html`의 `.site-footer`. **이메일 연락처는 아직 미정이라 HTML 주석으로 비워둠** — 확정되면 주석 자리에 `mailto:` 링크로 |
 | **이미지** 교체/추가/삭제 | **[ASSETS.md](ASSETS.md)** (폴더·파일명 규칙 + 사진별 코드 위치) |
 | **글자 크기·색·간격** | `FindTheKey.css` — 기준값은 README "디자인 규칙"(폰트 5단계·색 2종·간격 340px 등). **임의 값 대신 그 값만 쓰기** |
@@ -156,5 +156,5 @@ README.md                 상세 기록 (디자인 규칙·스크롤 동작·이
 - 푸터 **이메일 연락처** — 확정 대기(주석 처리됨)
 - **모바일 실기기 확인** — 스크롤 연출, 히어로의 "Click me" 자동 힌트, 큰 글자 비례 크기
 - **이미지 용량 줄이기** — 2MB 넘는 파일이 30여 개(최대 25MB). 로딩을 빠르게 하려면 ASSETS.md "새 이미지 준비 방법"대로 줄여서 교체
-- 선물 상세(`BeyondTheDoor-gift1~4.html`)의 모바일 레이아웃은 OU 상세처럼 다시 다듬지 않았음
+- 선물 상세(`BeyondTheDoor-gift1~4.html`)의 모바일은 뒤로가기 화살표만 OU 상세처럼 추가했고, 나머지 레이아웃은 사진 그리드 그대로임(2열→600px 이하 1열)
 - 푸터가 메인(`FindTheKey.html`)에만 있고 상세 페이지에는 없음(디자인 확정 후 결정)

@@ -2021,6 +2021,10 @@ body.is-fullframe-hero .down-hint img {
     flex-basis: auto;
     width: 100%;
     height: 240px;
+    /* 다른 섹션(여정·선물)처럼 라인 → 타이틀 → 본문 → 이미지 순으로 (직접 요청).
+       DOM은 사진이 먼저라 데스크톱(좌우 배치)은 그대로 두고, 세로로 쌓이는
+       모바일에서만 order로 본문 아래로 내림 */
+    order: 2;
   }
 }
 

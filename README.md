@@ -42,7 +42,7 @@ scroll-spy.js                                  스크롤 위치에 따라 헤더
 
 ── 실제로 쓰이는 상세 페이지 (메인이 링크/fetch함, 삭제 금지) ──
 OpportunitiesUnlocked-01~05.html / .css        OU 카드 클릭 시 상세 — ★ ou-modal.js가 이 파일을 fetch해서 팝업에 넣음
-BeyondTheDoor-gift1~4.html / BeyondTheDoor-gift.css / gift-detail-reveal.js   선물 4종 상세 페이지 (메인의 "더보기"가 연결) — 실제 페이지 전환
+BeyondTheDoor-gift1~4.html / BeyondTheDoor-gift.css / gift-detail-reveal.js   선물 4종 상세 페이지 (메인의 "더보기"가 연결) — 실제 페이지 전환. gift-detail-reveal.js는 사진 등장 애니메이션 + 모바일 뒤로가기 버튼 클릭 처리
 ```
 
 `OpportunitiesUnlocked.js`/`BeyondTheDoor.js`라는 이름과 달리 이 둘은 **통합 페이지 전용 스크립트**(위 목록 참고)로, 예전 독립 목록 페이지들과는 이제 무관함.
@@ -208,6 +208,7 @@ CTA 필 버튼은 전부 **`#464646`** + 흰 글자 + **웨이트 400(Regular)**
 - **"직접 만나 나누는 시간" 갤러리**: 코버플로 — 뷰포트 중앙에 가까운 사진이 가장 크고 진하고, 나머지는 거리에 따라 작아지고 fade. `position:sticky`는 안 씀(성능·깨짐), `btd-gallery-stack.js`가 스크롤 위치에서 매 프레임 계산. 사진 9장은 `assets/03-program/meetup/`에 있고 파일명이 곧 설명(예: `공간_스토리마켓_04.jpg`, `공간_쇼룸_ngray_01.jpg`)
 - **Special Gift**: 2열 **카드 그리드**(예전 토글/아코디언 목록에서 재설계됨). 카드 = 위 구분선 + 제목 + "더보기"(→ `BeyondTheDoor-gift1~4.html`, 사진 그리드 상세 페이지) + 겹친 썸네일 3장(평소엔 **기울기 없이 똑바로** 앞 사진 뒤에 나란히 겹쳐 있고, **`.btd-gift__stack`에 마우스를 올리면 양옆 사진이 ±118px 밀려나며 ±7° 기울어지며 펼쳐짐**, 0.4s ease — 브랜디자인 clients 페이지 참고. 모바일은 ±88px). 선물 4종: 스페셜 웰컴 굿즈 / 브랜드 콜라보 굿즈 / 프리미엄 가구 협찬 / 페어웰 기프트
   - **4종 전부 크레딧 있음**: `.gift-detail__item` 안에 `<p class="gift-detail__credit">Photo by. 이름</p>`(사진 우측 하단, 13px/400, `#dddddd`, 그림자 없음 — `.about-photo__credit`/`.btd-journey__rolling-credit`와 같은 톤). gift1(13장)/gift2(32장)/gift3(12장)/gift4(17장) 전부 채움
+  - **모바일 뒤로가기 화살표**(직접 요청, Opportunities 상세 `.detail__back-btn`과 같은 모양): `BeyondTheDoor-gift1~4.html`에 `.gift-detail__back-btn`(`#giftBackBtn`, `assets/icon-back.svg`)이 헤더와 `.gift-detail` 사이에 있고 **≤900px에서만 보임**(44×44 버튼, 아이콘 22×15, 헤더 아래 16px·왼쪽 8px — OU 상세와 같은 좌표). 이 버튼이 들어오면서 모바일에서 `.gift-detail` 위 padding을 70px→8px로 줄임(버튼 바로 아래에 사진이 붙도록). 클릭은 `gift-detail-reveal.js`가 처리: 메인의 "더보기"로 들어온 진짜 페이지 전환이라 **`history.back()`**, 링크로 직접 열어 히스토리가 없으면 **`FindTheKey.html#beyond-the-door`**(Programs 섹션)로 이동. 4개 페이지에 같은 마크업을 복사해 넣었으니 바꿀 땐 4개 다. **웹(데스크톱)에서는 버튼이 `display:none`이고 `.gift-detail` 여백(70px)도 그대로** — 이 변경은 전부 모바일 전용(1280px에서 확인)
   - **사진 출처(공통 워크플로)**: `assets/03. program /gift /`(iCloud 안의 원본 raw 사진 폴더, 4개 하위폴더 — `1. 호텔 &키 & 명함`=gift1, `2. 브랜드 콜라보 굿즈`=gift2, `3. 프리미엄 가구 협찬`=gift3, `4. 페어웰 기프트`=gift4, 전부 공백·한글 포함이라 git 미추적)에 사용자가 각 사진을 **`N-이름.확장자`**(예: `8-리루홈.jpg`)로 미리 정리해두고, 출처 불명 사진은 그 폴더에서 직접 지워둠 — 이 폴더가 그대로 소스가 됨. `이름` 부분이 그대로 크레딧 문구("Photo by. 이름")가 됨. 원본은 2560×3400급 풀 해상도라 `sips -Z 1000 -s format jpeg -s formatOptions 80`로 리사이즈해서 `assets/03-program/gift/giftN/`에 `giftN-01.jpg`부터 저장(avif 원본은 sips가 못 열어서 리사이즈 없이 그대로 복사). gift1/3(번호 1~N 유일, 빈 자리 없음)은 원본 `N`을 그대로 최종 번호로 씀. **gift4는 원본 번호가 중복·군데군데 비어 있어서**(예: `03-*.jpg`가 3장, `08`/`11`/`13`은 없음) `(원본 번호, 파일명)` 순으로 정렬해 1부터 새로 번호를 매김 — 새 gift 항목을 채울 때 원본 번호가 gift4처럼 지저분하면 같은 방식(정렬 후 재번호)을 쓸 것. **이 raw 폴더 4개는 이제 다 소진됨**(gift1~4 전부 처리 완료, 남은 미사용 사진 없음)
   - **FindTheKey.html 카드의 부채꼴 썸네일 3장**(`.btd-gift__stack-photo--left/right/front`)도 각 gift 폴더의 사진을 직접 가리킴 — gift1/3/4는 `-01/02/03.jpg`(front=01, 기본 컨벤션), **gift2만 예외로 `-04/05/06.jpg`(front=04, 사용자가 지정)** 사용 중. 바꾸려면 이 세 `<div>`의 `background-image`만 고치면 됨
 - 이미지 hover 플로팅(원본 미리보기) 효과는 시도했다가 뺌. 다시 필요하면 같은 `<img>` 하나를 옮기지 말고 "배경 썸네일 + 플로팅용 별도 `<img>`" 두 레이어로 만들 것
@@ -216,6 +217,7 @@ CTA 필 버튼은 전부 **`#464646`** + 흰 글자 + **웨이트 400(Regular)**
 ### Creator Voices (`#creator-voices`, Figma 0:519)
 - 인터뷰 행 4개(사진 495×340 + 텍스트, 홀수 행 사진 왼쪽 / 짝수 `--reverse`): MOPO / 랴료하우스 / cooohome / momo_kong(4번째는 스토리로 교체됨). 사진은 `assets/04-voices/story/`, 4개 다 채워짐 — momo_kong 사진은 원본이 10MB대 PNG(2560×3413)라 900px 폭 JPG로 줄여서 넣음(약 280KB), 다른 사진들과 같은 명명 규칙(`cv-이름.jpg`). 행 사이 `margin-bottom: 220px`(반전 행 267px — Figma 값, 건드리지 말 것), reveal 애니메이션은 여정 리스트와 동일
   - **모바일만 행 사이 간격 48px→120px로 확대**(직접 요청 — BTD 여정 항목 사이 간격(120px, 모바일도 데스크톱과 동일)이랑 맞춤. 선물 카드 사이 39px는 그대로 둠). 데스크톱 220/267px은 안 건드림
+  - **모바일만 인터뷰 행의 순서를 "라인 → 타이틀 → 본문 → 이미지"로**(직접 요청 — 여정·선물은 이 순서인데 Voices만 사진이 맨 위였음). DOM은 사진이 먼저(`.cv-row__photo` → `.cv-row__text`)라서 **데스크톱 좌우 배치(홀수 행 사진 왼쪽 / `--reverse`는 오른쪽)를 그대로 두려고 HTML은 안 건드리고**, 세로로 쌓이는 ≤900px 블록에서만 `.cv-row__photo { order: 2 }`로 본문 아래로 내림(본문→사진 간격은 기존 `gap: 24px`). 4개 행 전부 같은 규칙. **웹(데스크톱)은 영향 없음** — 1280px에서 좌우 배치·`order:0` 그대로인 것 확인
 - **모바일만 스토리 이름(`.cv-row__title-author`)/본문(`.cv-row__body`) 조정**(직접 요청): 이름은 사이즈(13px)는 그대로 두고 웨이트만 500→400, 본문은 사이즈만 15px→14px(웨이트 400 그대로). 둘 다 기존 5단계 공용 그룹(Caption 13 / Body 15)에서 빼서 따로 규칙을 만듦 — 그룹에 같이 있던 다른 요소(`.ou-card__sub`, `.cv-apply` 등)는 그대로
 - **FAQ**(Figma 206:711): 지원하기 버튼 **아래**에 있고(예전엔 버튼 위), **"자주 묻는 질문" 제목은 뺐음** — 질문 3개 클릭 토글(`faq-toggle.js`)만 남음. 버튼→목록 **260px**(문구→버튼 160px보다 일부러 넓게), 목록 아래는 데스크톱만 진짜 푸터(240px 간격, 아래 "푸터" 절 참고) / 모바일은 `#creator-voices`의 400px padding
 - **마무리 문구**("다음 문을 열 Key Creator를 기다립니다. / 집과 일상에서…", `.cv-outro`)는 다른 서브타이틀 문구와 같은 **27px/500 가운데**, → **"스페셜 크리에이터 지원하기" 버튼(`.cv-apply`, `#464646`, 380×72px, 글자 22px/400)** → 1155 링크
@@ -282,7 +284,7 @@ CTA 필 버튼은 전부 **`#464646`** + 흰 글자 + **웨이트 400(Regular)**
 
 ## 남은 할 일 / 미검증
 
-- **모바일 디테일**: 폰트·간격은 5단계 규칙으로 정리했지만(위 "모바일" 참고), 스크롤 연출(scroll-snap/멈춤 스크립트/키 사진 확대)이 폰에서 어떻게 보이는지는 미확인. OU 상세 팝업(모달+독립 페이지)의 모바일 레이아웃은 뒤로가기+세로 사진 스택으로 재작업함(위 "Opportunities Unlocked" 절 참고) — 선물 상세(`BeyondTheDoor-gift1~4.html`)는 아직 이 방식으로 안 바꿨음, 필요하면 같은 패턴 적용할 것
+- **모바일 디테일**: 폰트·간격은 5단계 규칙으로 정리했지만(위 "모바일" 참고), 스크롤 연출(scroll-snap/멈춤 스크립트/키 사진 확대)이 폰에서 어떻게 보이는지는 미확인. OU 상세 팝업(모달+독립 페이지)의 모바일 레이아웃은 뒤로가기+세로 사진 스택으로 재작업함(위 "Opportunities Unlocked" 절 참고) — 선물 상세(`BeyondTheDoor-gift1~4.html`)는 **뒤로가기 화살표만** 같은 방식으로 추가했고(위 "Beyond the Door" 절), 나머지 레이아웃은 원래 사진 그리드 그대로임
 - 브랜드 로고 롤링은 새 로고 21개로 **교체 완료**. 앞으로 로고를 추가/교체할 땐 박스(`.brand-rolling__item`, 152×59, `contain`)를 꽉 채우도록 **152×59 비율(2배 해상도면 304×118), 배경 투명 PNG**로 준비 — 절차는 ASSETS.md
 - 트로피 커서 추적/드래그 동작의 실제 화면 검증
 - About 파트 내부 간격·폰트 정리는 스크롤 연출과 얽혀 있어 아직 손대지 않음
