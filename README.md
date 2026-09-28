@@ -5,12 +5,16 @@
 다른 컴퓨터에서 Claude(또는 사람)가 이어서 작업할 때 필요한 배경 설명을 정리해둔 문서입니다.
 (git으로는 코드만 넘어가고, 대화 맥락은 넘어가지 않아서 남겨둡니다.)
 
+> **처음 받는 사람은 이 문서 대신 [HANDOVER.md](HANDOVER.md)부터** 읽으세요(시작·수정·배포·계정 체크리스트). 이미지 교체는 [ASSETS.md](ASSETS.md), Claude용 규칙은 [CLAUDE.md](CLAUDE.md). 이 README는 디자인 수치·스크롤 동작·변경 이력을 담은 **상세 레퍼런스**입니다. 아래 일부 절에는 그때그때의 옛 수치가 남아 있으니, `⚠️ 옛 값`으로 표시된 곳은 그 표시를 우선하고 애매하면 실제 CSS/JS 값이 정답입니다.
+
 > **먼저 읽을 것**: 사이트의 실제 메인은 **`FindTheKey.html` 한 장짜리 통합 스크롤 페이지**입니다 (About → Opportunities → Programs → Voices). 새 디자인 수정은 전부 `FindTheKey.html`/`FindTheKey.css`에 들어갑니다. `index.html`은 **`hero-home.html`(열쇠구멍 첫 화면)로 리다이렉트** — 방문자는 거기서 스크롤/클릭으로 `FindTheKey.html`로 넘어감 (예전엔 `index.html`이 바로 `FindTheKey.html`로 갔음, 첫 화면을 hero-home으로 둘지 결정 보류였다가 확정됨). 예전에 섹션별로 따로 만들었던 목록 페이지들(`OpportunitiesUnlocked.html`/`BeyondTheDoor.html`/`CreatorVoices.html`)은 아무 데서도 링크가 안 걸려 방문자가 볼 방법이 없어서 **삭제함** — 아래 "파일 구조" 참고.
 
 ## 파일 구조
 
 ```
 index.html                                     hero-home.html로 리다이렉트 (사이트 진입점)
+HANDOVER.md / ASSETS.md / CLAUDE.md            인수인계 문서 / 이미지 폴더·파일명 규칙 / Claude용 프로젝트 규칙
+scripts/check-assets.py                        push 전 이미지 경로 점검 (없는 파일·대소문자 불일치·안 쓰는 파일·큰 파일)
 FindTheKey.html / FindTheKey.css               ★ 메인 통합 페이지 (섹션 4개, CSS 한 파일에 전부)
 hero-home.html / .css / .js                    열쇠구멍 스크롤 첫 화면 (헤더 로고가 여기로 연결)
 trophy.js                                      3D 트로피 뷰어 (Three.js, type=module)
@@ -87,7 +91,7 @@ python3 -m http.server 5173
 
 | 단계 | 크기 | 자간 | 쓰이는 곳 |
 |---|---|---|---|
-| ① Display | 38px | -0.19px | About 오프닝·롤링 직후 헤딩·히어로 캡션, 섹션 히어로 타이틀, **그리고 About 일반 헤딩·인용문(`.insight`)·키 사진 문구**(예전엔 30px Title 단계였다가, About 안의 모든 텍스트를 오프닝 헤딩과 같은 크기로 맞춰달라는 요청으로 여기로 옮김 — weight는 그대로 500 유지, `.about-heading--intro`/`--blur-in`/`.about-photo__caption`만 600) |
+| ① Display | ~~38px~~ → **About 큰 글자는 현재 35px** (자간 -0.175px) | -0.19px | ⚠️ 옛 값: 아래 "About" 절의 ⚠️ 참고 — About 오프닝·롤링 직후 헤딩·히어로 캡션, 섹션 히어로 타이틀, **그리고 About 일반 헤딩·인용문(`.insight`)·키 사진 문구**(예전엔 30px Title 단계였다가, About 안의 모든 텍스트를 오프닝 헤딩과 같은 크기로 맞춰달라는 요청으로 여기로 옮김 — weight는 그대로 500 유지, `.about-heading--intro`/`--blur-in`/`.about-photo__caption`만 600) |
 | ② Title | 30px | -0.15px | (통합 페이지에서 현재 이 크기를 쓰는 요소 없음 — About 항목들이 위 Display로 이동함). **문구형 서브타이틀(`.btd-middle__desc` 3곳: 통계 위·갤러리 위·선물 위)과 마무리 문구(`.cv-outro`)는 이 표 밖의 예외로 27px / 500**(요청값 — 30→28→30→25→26→27로 바뀌어 온 끝값). `.btd-middle__title`은 통합 페이지에선 안 쓰임(독립 페이지용) |
 | ③ Subtitle | 22px | -0.11px | 여정 번호, 선물 카드 제목, CV 행 제목, OU 상세 제목 |
 | ④ Body | 16px | -0.08px | 본문 전반, FAQ 질문·답변 — 버튼 글자 크기는 아래 "버튼" 참고 |
@@ -126,6 +130,7 @@ CTA 필 버튼은 전부 **`#464646`** + 흰 글자 + **웨이트 400(Regular)**
 
 - **폰트 5단계 26 / 22 / 18 / 15 / 13**: ① 26 = (해당 없음 — `.hero__title`은 아래 참고로 이 표에서 분리됨) ② 22 = 서브타이틀·FAQ 타이틀(~~`.cv-outro`~~/`.btd-middle__title`/`.faq__title`, `.cv-outro`는 이후 요청으로 20px로 이동, 아래 "브랜드 로고 롤링" 항목 참고) ③ 18 = 통계 라벨·여정 번호·선물 제목·CV 행 제목 ④ 15 = 본문·헤더 메뉴/Apply·버튼·FAQ ⑤ 13 = 크레딧·카드 부제·저자명. 예외: 통계 숫자 34/36px, 모달 닫기 ×. 웨이트·색은 데스크톱과 동일
   - **섹션 히어로 아이콘/타이틀/서브타이틀(`.hero__icon`/`.hero__title`/`.hero__subtitle`, OU·BTD·CV 공용), 모바일만 별도 값**: 아이콘 28px(예전 39.2px)+아래 여백 20px(예전 44px), 타이틀 22px(예전 26px, 위 5단계 밖 — 20px로 한 번 줄였다가 "너무 작다"는 피드백으로 22px로 다시 키움), 서브타이틀 14px(예전 18px, 데스크톱은 21px — 마찬가지로 13px였다가 14px로 조정). 전부 직접 요청으로 재조정. 타이틀 2곳("스페셜 크리에이터에게 열리는 새로운 기회" / "스페셜 크리에이터가 들려주는 이야기")은 모바일에서만 `<br class="mobile-break">`로 줄바꿈(데스크톱은 한 줄) — 패턴은 hero-home.html의 "Key Creator" 제목과 동일
+  - ⚠️ **옛 값 — 아래 20px/22px 설명은 고정 px이던 시절 기록.** 지금은 화면 폭에 비례하는 `clamp()`(20px 그룹 `4.3vw`, 22px 그룹 `5.15vw` 등)로 바뀜 → 현행 값은 "섹션별 메모 → About"의 ⚠️ 참고
   - **About 섹션 텍스트는 이 5단계와 별도로 모바일 전용 20px 하나로 통일**: `.about-heading--blur-in`, `.about-photo__caption`, `.about-heading`(배지 앞 헤딩), `.insight`(인용문 2개), `.about-key-photo`(키 사진 문구 2개) 전부 20px — 처음엔 오프닝 헤딩과 맞추려고 26px으로 통일했다가 "커 보인다"는 피드백으로 20px로 낮춤. **데스크톱은 안 건드림**(오프닝 헤딩과 맞춘 38px 그대로). **`.about-heading--intro`("스페셜 크리에이터는 집과 일상을")만 다시 22px로 예외**(직접 요청) — 나머지 About 텍스트는 20px 그대로
 - **간격**: 섹션 사이 120→**180**(직접 요청으로 확대) / 메인 타이틀→콘텐츠 80 / 서브타이틀→콘텐츠 48 (선물 카드는 카드 자체 padding 48px로 맞춤) / 로고월→통계 문구 80→**140**
   - **Opportunities 섹션(카드→로고월→통계 문구→숫자)만 나머지 섹션보다 한 단계 더 넓힘**(직접 요청, "지금보다 더 늘려달라"): `.brand-rolling` margin-top 240px(다른 섹션의 180px보다 더 큼), `.stats-intro` margin-top 140px(다른 title→content 80px보다 더 큼), `.stats-intro + .stats` margin-top 72px(다른 subtitle→content 48px보다 더 큼) — 전부 공용 그룹에서 따로 빼서 셀렉터 분리(`.btd-middle`/`.btd-gallery` 등 나머지는 그대로 180/80/48). 데스크톱은 전혀 안 건드림(200px/250px 그대로)
@@ -269,7 +274,7 @@ CTA 필 버튼은 전부 **`#464646`** + 흰 글자 + **웨이트 400(Regular)**
 
 - Pretendard는 jsdelivr CDN에서 로드(오프라인이면 폰트 깨짐)
 - GitHub `sarahkim-bucketplace/special-creator`. **저장소는 public이고 GitHub Pages가 켜져 있음** (예전 메모의 "private"은 틀림 — 코드·이미지·크레딧이 전부 공개됨. 공개하면 안 되는 자료가 있으면 private 전환 필요, 무료 계정에선 private으로 바꾸면 Pages도 꺼짐). 다른 Mac에서 이어가려면 `git clone` → 이후 `git pull`
-- **공유용 링크(Pages)**: 메인 통합 페이지 `https://sarahkim-bucketplace.github.io/special-creator/FindTheKey.html`, 첫 히어로(열쇠구멍) 화면 `https://sarahkim-bucketplace.github.io/special-creator/hero-home.html`, 루트(`/special-creator/`)는 `index.html` 리다이렉트로 `hero-home.html`로 감. push 후 반영에 1~2분. ⚠️ **이 대소문자·한글 파일명 200 확인은 `assets/`를 00-hero~04-voices로 재구성하기 전 상태 기준** — 폴더를 통째로 옮긴 뒤(로컬 `git mv`로는 확인했지만) 실제 배포본에서 재검증 안 함, push 후 꼭 한 번 훑어볼 것. `assets/`가 약 940MB라 첫 로딩이 느릴 수 있음
+- **공유용 링크(Pages)**: 메인 통합 페이지 `https://sarahkim-bucketplace.github.io/special-creator/FindTheKey.html`, 첫 히어로(열쇠구멍) 화면 `https://sarahkim-bucketplace.github.io/special-creator/hero-home.html`, 루트(`/special-creator/`)는 `index.html` 리다이렉트로 `hero-home.html`로 감. push 후 반영에 1~2분. **재구성 후 배포본 검증 완료(2026-09-28)**: `assets/`를 00-hero~04-voices로 정리하고 안 쓰는 파일을 지운 뒤, 코드가 가리키는 assets 200개를 배포본에서 전부 200으로 확인함(한글·공백 파일명, `01-93 CUPS, 93 STORIES` 폴더 포함). 이후엔 `python3 scripts/check-assets.py`로 push 전에 점검. `assets/`는 정리 후 약 230MB, `.git`은 과거 큰 원본 이미지 때문에 약 490MB — 2MB 넘는 이미지가 아직 30여 개 있어 첫 로딩이 느릴 수 있음(줄이는 방법은 ASSETS.md)
 - **push 인증**: 이 컴퓨터엔 `gh` CLI가 없고 git은 macOS 키체인의 Fine-grained PAT를 씀(토큰 이름 `special-creator-clone`, `Contents` **Read and write** 필수 — Read-only면 clone/pull만 되고 push는 403). 인증이 한 번 실패하면 git이 키체인 항목을 지우니 새 토큰으로 터미널에서 `git push`를 직접 실행해 `Username`(GitHub 아이디, 토큰 아님)/`Password`(토큰)를 입력해야 함. **토큰을 채팅/스크린샷에 노출하면 즉시 Regenerate할 것**
 - iCloud Drive 경로에서 `preview_start` dev-server 모드로 `python3 -m http.server`를 띄우면 `PermissionError`가 남 → Bash로 직접 `python3 -m http.server 5173 &` (죽은 서버가 404를 계속 내면 죽이고 프로젝트 폴더에서 다시 띄울 것)
 - **Claude Code 내장 브라우저 패널의 함정**: ① CSS/JS 캐시를 심하게 먹음 — 수정이 안 보이면 `curl`로 서버 응답부터 확인하고 `fetch(url,{cache:'reload'})` 후 새로고침. 실제 Chrome은 `Cmd+Shift+R` ② 스크린샷이 빈 화면으로 나오는 일이 잦음 → 텍스트/DOM/`getBoundingClientRect` 측정으로 검증 ③ 창 폭이 좁으면(≤900/600px) 모바일 CSS가 적용돼 측정값이 달라짐 → 측정 전에 `resize_window`로 폭을 지정(desktop 프리셋으로 되돌리는 것도 잊지 말 것) ④ 마우스 hover는 폭 768px 미만(터치 에뮬레이션)에서 안 먹음 ⑤ **"mobile" 프리셋에서 `window.innerWidth`/`innerHeight`가 실제 레이아웃(= `getBoundingClientRect`/`screen.width`/`screen.height` 기준)보다 최대 ~1.8배 크게 잘못 보고될 때가 있음** — `getBoundingClientRect` 너비는 정확한데 `innerHeight`만 어긋나는 식이라 알아채기 쉽지 않음. `window.innerHeight`를 직접 읽는 스크립트(`hero-home.js`의 스크롤 진행률 계산 등)를 이 패널에서 검증할 땐 그 결과를 못 믿을 수 있으니 `screen.height`나 `getBoundingClientRect` 쪽을 기준으로 교차 확인할 것
@@ -278,6 +283,6 @@ CTA 필 버튼은 전부 **`#464646`** + 흰 글자 + **웨이트 400(Regular)**
 ## 남은 할 일 / 미검증
 
 - **모바일 디테일**: 폰트·간격은 5단계 규칙으로 정리했지만(위 "모바일" 참고), 스크롤 연출(scroll-snap/멈춤 스크립트/키 사진 확대)이 폰에서 어떻게 보이는지는 미확인. OU 상세 팝업(모달+독립 페이지)의 모바일 레이아웃은 뒤로가기+세로 사진 스택으로 재작업함(위 "Opportunities Unlocked" 절 참고) — 선물 상세(`BeyondTheDoor-gift1~4.html`)는 아직 이 방식으로 안 바꿨음, 필요하면 같은 패턴 적용할 것
-- 브랜드 로고 롤링(`.brand-rolling__item`, 152×59 박스, `contain`)을 사용자가 통일된 로고 세트로 새로 교체 예정 — 박스를 꽉 채우는 이미지로 만들려면 **152×59 비율(2배 해상도면 304×118)**로 준비할 것
+- 브랜드 로고 롤링은 새 로고 21개로 **교체 완료**. 앞으로 로고를 추가/교체할 땐 박스(`.brand-rolling__item`, 152×59, `contain`)를 꽉 채우도록 **152×59 비율(2배 해상도면 304×118), 배경 투명 PNG**로 준비 — 절차는 ASSETS.md
 - 트로피 커서 추적/드래그 동작의 실제 화면 검증
 - About 파트 내부 간격·폰트 정리는 스크롤 연출과 얽혀 있어 아직 손대지 않음
