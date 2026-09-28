@@ -478,6 +478,13 @@ body.is-fullframe-hero .down-hint img {
   display: none;
 }
 
+/* 마무리 문구(.cv-outro)의 두 번째 줄바꿈("…시선과 / 이야기를…") — 모바일 전용.
+   웹은 "다음 문을 열 Key Creator를 기다립니다." + 나머지 한 줄, 총 두 줄(직접 요청),
+   모바일(≤900px)은 세 줄 그대로 */
+.cv-outro br.mobile-break {
+  display: none;
+}
+
 .hero__subtitle {
   font-size: 21px;
   font-weight: 400;
@@ -2355,7 +2362,8 @@ body.ou-modal-open {
     font-size: clamp(12px, 4.45vw, 30px);
     letter-spacing: -0.005em;
   }
-  .hero__title br.mobile-break {
+  .hero__title br.mobile-break,
+  .cv-outro br.mobile-break {
     display: inline;
   }
 

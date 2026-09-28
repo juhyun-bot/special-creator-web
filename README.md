@@ -5,7 +5,7 @@
 다른 컴퓨터에서 Claude(또는 사람)가 이어서 작업할 때 필요한 배경 설명을 정리해둔 문서입니다.
 (git으로는 코드만 넘어가고, 대화 맥락은 넘어가지 않아서 남겨둡니다.)
 
-> **처음 받는 사람은 이 문서 대신 [HANDOVER.md](HANDOVER.md)부터** 읽으세요(시작·수정·배포·계정 체크리스트). 이미지 교체는 [ASSETS.md](ASSETS.md), Claude용 규칙은 [CLAUDE.md](CLAUDE.md). 이 README는 디자인 수치·스크롤 동작·변경 이력을 담은 **상세 레퍼런스**입니다. 아래 일부 절에는 그때그때의 옛 수치가 남아 있으니, `⚠️ 옛 값`으로 표시된 곳은 그 표시를 우선하고 애매하면 실제 CSS/JS 값이 정답입니다.
+> **처음 받는 사람은 이 문서 대신 [HANDOVER.md](HANDOVER.md)부터** 읽으세요(시작·수정·배포·계정 체크리스트). 이미지 교체는 [ASSETS.md](ASSETS.md), Claude로 이어서 수정하는 방법은 [CLAUDE-WORKFLOW.md](CLAUDE-WORKFLOW.md), Claude용 규칙은 [CLAUDE.md](CLAUDE.md). 이 README는 디자인 수치·스크롤 동작·변경 이력을 담은 **상세 레퍼런스**입니다. 아래 일부 절에는 그때그때의 옛 수치가 남아 있으니, `⚠️ 옛 값`으로 표시된 곳은 그 표시를 우선하고 애매하면 실제 CSS/JS 값이 정답입니다.
 
 > **먼저 읽을 것**: 사이트의 실제 메인은 **`FindTheKey.html` 한 장짜리 통합 스크롤 페이지**입니다 (About → Opportunities → Programs → Voices). 새 디자인 수정은 전부 `FindTheKey.html`/`FindTheKey.css`에 들어갑니다. `index.html`은 **`hero-home.html`(열쇠구멍 첫 화면)로 리다이렉트** — 방문자는 거기서 스크롤/클릭으로 `FindTheKey.html`로 넘어감 (예전엔 `index.html`이 바로 `FindTheKey.html`로 갔음, 첫 화면을 hero-home으로 둘지 결정 보류였다가 확정됨). 예전에 섹션별로 따로 만들었던 목록 페이지들(`OpportunitiesUnlocked.html`/`BeyondTheDoor.html`/`CreatorVoices.html`)은 아무 데서도 링크가 안 걸려 방문자가 볼 방법이 없어서 **삭제함** — 아래 "파일 구조" 참고.
 
@@ -14,6 +14,7 @@
 ```
 index.html                                     hero-home.html로 리다이렉트 (사이트 진입점)
 HANDOVER.md / ASSETS.md / CLAUDE.md            인수인계 문서 / 이미지 폴더·파일명 규칙 / Claude용 프로젝트 규칙
+CLAUDE-WORKFLOW.md                             Claude Code로 이어서 수정하는 방법 (시작 순서·요청 예시·막힐 때)
 scripts/check-assets.py                        push 전 이미지 경로 점검 (없는 파일·대소문자 불일치·안 쓰는 파일·큰 파일)
 FindTheKey.html / FindTheKey.css               ★ 메인 통합 페이지 (섹션 4개, CSS 한 파일에 전부)
 hero-home.html / .css / .js                    열쇠구멍 스크롤 첫 화면 (헤더 로고가 여기로 연결)
@@ -237,6 +238,7 @@ CTA 필 버튼은 전부 **`#464646`** + 흰 글자 + **웨이트 400(Regular)**
   - **저작권 줄 위 구분선, 모바일만 제거**(직접 요청): `.site-footer__bottom`의 `border-top`/`padding-top`을 모바일 미디어쿼리에서 `none`/`0`으로 — 로고/아이콘 줄 위의 `.site-footer` 자체 구분선 하나로 충분해서 두 개가 겹쳐 보이던 것 정리. 데스크톱은 그대로 둘 다 유지
   - **함정(같이 발견/수정)**: 마무리 문구(`.cv-outro`)에 직접 요청으로 넣은 줄바꿈 2개(`<br>`)가 모바일에서 하나도 안 보인다는 리포트 — 원인은 예전에 있던 죽은 규칙 `@media(max-width:600px){ .cv-outro br{display:none} }` (레거시 600px 정리 때 놓쳤던 것). 삭제해서 해결
   - **줄바꿈 지점 재조정**(직접 요청, 최종): "다음 문을 열 Key Creator를 기다립니다." / "집과 일상에서 발견한 자신만의 시선과" / "이야기를 오늘의집과 더 넓게 펼쳐보세요." 3줄로 — 중간에 한 번 `.hero__title`의 `br.mobile-break` 패턴(모바일 전용 줄바꿈)을 시도했다가 "이야기를"이 두 번째/세 번째 줄 중 어디에 붙어야 하는지 다시 확인받고, 결국 플레인 `<br>` 2개(데스크톱·모바일 공통)로 정리 — `.cv-outro br.mobile-break` 관련 CSS(베이스+모바일 오버라이드)는 더 안 쓰여서 삭제
+  - **웹만 두 줄로 변경(직접 요청, 그 뒤 최종)**: 웹은 "다음 문을 열 Key Creator를 기다립니다." / "집과 일상에서 발견한 자신만의 시선과 이야기를 오늘의집과 더 넓게 펼쳐보세요." **두 줄**, 모바일은 위 **세 줄 그대로**. 두 번째 `<br>`를 `<br class="mobile-break">`로 바꾸고 `FindTheKey.css`에서 `.cv-outro br.mobile-break`를 기본 `display:none`, ≤900px 블록에서만 `display:inline`(히어로 제목의 `.hero__title br.mobile-break`와 같은 패턴 — 위 문장의 "`br.mobile-break` 관련 CSS는 삭제"는 이 변경 전 기록). 웹 901px·1280px에서 두 줄, 390px에서 세 줄인 것 확인
 - **다른 페이지(OU 상세 5개, 선물 상세, hero-home)에는 아직 안 넣음** — FindTheKey.html에만 있음. 디자인 확정되면 다른 페이지에도 넣을지 확인할 것
 
 ## 배경 시스템 — `.bg-gradient-anim` + `.bg-grain` (모든 페이지 공용)
